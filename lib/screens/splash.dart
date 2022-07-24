@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
     _logoController = AnimationController(vsync: this);
     _logoController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        Navigator.pushNamed(context, HomeScreen.routeId);
+        Navigator.pushReplacementNamed(context, HomeScreen.routeId);
       }
     });
   }

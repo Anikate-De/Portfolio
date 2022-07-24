@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/screens/screens.dart';
-import 'package:portfolio/widgets/custom_page_route.dart';
+import 'package:portfolio/widgets/widgets.dart';
 
 void main() {
   runApp(const MyApp());
