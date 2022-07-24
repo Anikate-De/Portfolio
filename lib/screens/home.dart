@@ -16,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _logoController;
+  Offset bgOffset = const Offset(0, 1);
+  bool logoAlive = true;
 
   @override
   void initState() {
@@ -24,7 +26,14 @@ class _HomeScreenState extends State<HomeScreen>
     _logoController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         log('Start splash to home transition');
-        // Transition Code HERE
+        setState(() {
+          bgOffset = const Offset(0, 0);
+        });
+        Future.delayed(const Duration(milliseconds: 600), () {
+          setState(() {
+            logoAlive = false;
+          });
+        });
       }
     });
   }
@@ -33,18 +42,31 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.shadowGrey.shade100,
-      body: Center(
-        child: Lottie.asset(
-          logoLottie,
-          controller: _logoController,
-          onLoaded: (composition) {
-            _logoController
-              ..duration = composition.duration
-              ..forward();
-          },
-          height: 100,
-          fit: BoxFit.fitHeight,
-        ),
+      body: Stack(
+        children: [
+          Center(
+            child: logoAlive
+                ? Lottie.asset(
+                    logoLottie,
+                    controller: _logoController,
+                    onLoaded: (composition) {
+                      _logoController
+                        ..duration = composition.duration
+                        ..forward();
+                    },
+                    height: 100,
+                    fit: BoxFit.fitHeight,
+                  )
+                : null,
+          ),
+          Positioned.fill(
+            child: AnimatedSlide(
+                offset: bgOffset,
+                duration: const Duration(milliseconds: 600),
+                curve: Curves.easeInOutQuart,
+                child: Container(color: AppColors.shadowGrey.shade500)),
+          ),
+        ],
       ),
     );
   }
