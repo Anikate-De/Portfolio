@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/screens/screens.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: AppColors.shadowGrey,
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: HomeScreen.routeId,
