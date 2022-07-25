@@ -1,7 +1,7 @@
 // * Intro Page
 const List<String> introPageTexts = [
   'Hey visitor! I am...',
-  'ANIKATE DE',
+  'ANIKATE DE.',
   'DEVELOPER',
   'currently helping people turn their ideas into reality.'
 ];
