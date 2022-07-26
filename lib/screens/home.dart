@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    // double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.shadowGrey.shade500,
       body: Center(
@@ -33,9 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView(
             controller: scrollController,
             physics: const NeverScrollableScrollPhysics(),
-            children: [
-              SizedBox(height: height, child: const IntroSection()),
-              const AboutMeSection(),
+            children: const [
+              // SizedBox(height: height, child: const IntroSection()),
+              // AboutMeSection(),
+              ProductivitySection(),
             ],
           ),
         ),
