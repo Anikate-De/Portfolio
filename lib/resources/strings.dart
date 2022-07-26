@@ -19,11 +19,12 @@ const List<String> aboutMeTexts = [
   ', with significant hands-on-experience with ',
   'Flutter',
   ' & lots of different programming languages.',
-  "Fueled by my unending curiosity and thirst for knowledge, I've learnt many technologies and can build production-level apps. All whilst following the best coding norms ",
+  "Fueled by my unending curiosity and thirst for knowledge, I've learnt many technologies and can build production-level apps.\nAll whilst following the best coding norms ",
   ':)',
   'Coding might be on the top of my list, but I also ',
   'LOVE',
-  ' listening to music, origami, football & sometimes playing my favourite video games.'
+  ' listening to music, origami, football & sometimes playing my favourite video games.',
+  '(this is me)',
 ];
 
 // * More Section

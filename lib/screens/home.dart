@@ -33,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView(
             controller: scrollController,
             physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
             children: [
               SizedBox(height: height, child: const IntroSection()),
               const AboutMeSection(),
