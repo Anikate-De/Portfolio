@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const AboutMeSection(),
                   const MoreSection(),
                   const ProductivitySection(),
+                  const PortfolioSection(),
                 ],
               ),
             ),
