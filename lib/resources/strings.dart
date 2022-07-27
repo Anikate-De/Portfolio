@@ -53,14 +53,13 @@ const List<String> skillsTexts = [
   'both front-end and back-end technologies.',
   'Working with ',
   'Flutter',
-  ' however, is my niche & I can deliver great things with it.',
-  "Alongside, you'll find some of my skills."
+  " however, is my niche & I can deliver great things with it.\n\n\nAlongside, you'll find some of my skills.",
 ];
 
 const String skillSetAText = 'FRONT-END';
 const String skillSetBText = 'BACK-END';
 
-const List<String> setASkillsList = ['Flutter (Dart)', 'Java', 'Python'];
+const List<String> setASkillsList = ['Flutter', 'Java', 'Python'];
 
 const List<String> setBSkillsList = ['JavaScript', 'Dart', 'SQL'];
 
