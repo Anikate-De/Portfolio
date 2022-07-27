@@ -37,12 +37,22 @@ class PortfolioSection extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 72,
+            height: 120,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: const [
+              PortfolioBlock(),
+              SizedBox(
+                height: 180,
+              ),
+              PortfolioBlock(
+                isAltLayout: true,
+              ),
+              SizedBox(
+                height: 180,
+              ),
               PortfolioBlock(),
             ],
           )

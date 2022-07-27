@@ -39,12 +39,12 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView(
                 controller: scrollController,
                 physics: const NeverScrollableScrollPhysics(),
-                children: const [
-                  // SizedBox(height: height, child: const IntroSection()),
-                  // const AboutMeSection(),
-                  // const MoreSection(),
-                  // const ProductivitySection(),
-                  PortfolioSection(),
+                children: [
+                  SizedBox(height: height, child: const IntroSection()),
+                  const AboutMeSection(),
+                  const MoreSection(),
+                  const ProductivitySection(),
+                  const PortfolioSection(),
                 ],
               ),
             ),
