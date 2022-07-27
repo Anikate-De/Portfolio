@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               SizedBox(height: height, child: const IntroSection()),
               const AboutMeSection(),
+              const ProductivitySection(),
             ],
           ),
         ),
