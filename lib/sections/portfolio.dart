@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
+import 'package:portfolio/widgets/portfolio_block.dart';
 
 class PortfolioSection extends StatelessWidget {
   const PortfolioSection({Key? key}) : super(key: key);
@@ -41,7 +42,9 @@ class PortfolioSection extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const [],
+            children: const [
+              PortfolioBlock(),
+            ],
           )
         ],
       ),
