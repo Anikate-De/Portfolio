@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/resources/resources.dart';
 
@@ -210,8 +209,8 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                         SizedBox(
                           width: double.infinity,
                           child: LayoutBuilder(
-                            builder: (context, constraints) => SvgPicture.asset(
-                              meSVG,
+                            builder: (context, constraints) => Image.asset(
+                              meIMG,
                               fit: BoxFit.scaleDown,
                               width: constraints.maxWidth,
                             ),
