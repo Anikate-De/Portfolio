@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/hoverable_button.dart';
@@ -44,15 +45,20 @@ class _IntroSectionState extends State<IntroSection> {
                 const SizedBox(
                   height: 16,
                 ),
-                Text(
-                  introPageTexts[1],
-                  style: TextStyle(
-                    fontFamily: centerOfAttractionFont,
-                    color: AppColors.shadowGrey.shade50,
-                    fontSize: 50,
-                    // letterSpacing: -0.6,
-                    // wordSpacing: -2,
-                  ),
+                AnimatedTextKit(
+                  isRepeatingAnimation: false,
+                  animatedTexts: [
+                    TyperAnimatedText(
+                      introPageTexts[1],
+                      speed: kThemeChangeDuration,
+                      textStyle: TextStyle(
+                        fontFamily: centerOfAttractionFont,
+                        color: AppColors.shadowGrey.shade50,
+                        fontSize: 50,
+                      ),
+                      curve: Curves.easeInOut,
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 36,
