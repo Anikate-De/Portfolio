@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/resources/resources.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class AboutMeSection extends StatefulWidget {
   const AboutMeSection({Key? key}) : super(key: key);
@@ -9,245 +10,272 @@ class AboutMeSection extends StatefulWidget {
   State<AboutMeSection> createState() => _AboutMeSectionState();
 }
 
-class _AboutMeSectionState extends State<AboutMeSection> {
+class _AboutMeSectionState extends State<AboutMeSection>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  bool downArrowVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.shadowGrey.shade100,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: 300,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Lottie.asset(
-                downArrowHeadLottie,
-                animate: true,
-                repeat: false,
-                width: 100,
-                fit: BoxFit.fitWidth,
+    return VisibilityDetector(
+      key: const Key('about-me-section'),
+      onVisibilityChanged: (visibilityInfo) {
+        if (visibilityInfo.visibleFraction > 0 && !downArrowVisible) {
+          downArrowVisible = true;
+          animationController.forward(from: 0);
+        } else if (visibilityInfo.visibleFraction == 0) {
+          downArrowVisible = false;
+          animationController.value = 0;
+        }
+      },
+      child: Container(
+        color: AppColors.shadowGrey.shade100,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 300,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Lottie.asset(
+                  downArrowHeadLottie,
+                  onLoaded: (composition) {
+                    animationController.duration = composition.duration;
+                  },
+                  animate: false,
+                  controller: animationController,
+                  repeat: false,
+                  width: 100,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 160.0, bottom: 160),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    flex: 5,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                  color: AppColors.lightTeal, width: 6),
-                              right: BorderSide(
-                                  color: AppColors.lightTeal, width: 6),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 160.0, bottom: 160),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex: 5,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: const BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                    color: AppColors.lightTeal, width: 6),
+                                right: BorderSide(
+                                    color: AppColors.lightTeal, width: 6),
+                              ),
+                            ),
+                            padding:
+                                const EdgeInsets.only(right: 16, bottom: 16),
+                            child: Text(
+                              aboutMeMainText,
+                              style: TextStyle(
+                                fontFamily: headingFont,
+                                fontSize: 24,
+                                letterSpacing: -0.6,
+                                wordSpacing: -2,
+                                color: AppColors.shadowGrey.shade700,
+                              ),
                             ),
                           ),
-                          padding: const EdgeInsets.only(right: 16, bottom: 16),
-                          child: Text(
-                            aboutMeMainText,
-                            style: TextStyle(
-                              fontFamily: headingFont,
-                              fontSize: 24,
-                              letterSpacing: -0.6,
-                              wordSpacing: -2,
-                              color: AppColors.shadowGrey.shade700,
+                          const SizedBox(
+                            height: 72,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontFamily: bodyFont,
+                                color: AppColors.shadowGrey.shade700,
+                                wordSpacing: -1,
+                                fontSize: 20,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: aboutMeTexts[0],
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[1],
+                                  style: const TextStyle(
+                                    color: AppColors.seaBlue,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[2],
+                                  style: const TextStyle(
+                                    color: AppColors.tangerine,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[3],
+                                  style: const TextStyle(
+                                    color: AppColors.greenAccentLight,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 72,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              fontFamily: bodyFont,
-                              color: AppColors.shadowGrey.shade700,
-                              wordSpacing: -1,
-                              fontSize: 20,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: aboutMeTexts[0],
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[1],
-                                style: const TextStyle(
-                                  color: AppColors.seaBlue,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[2],
-                                style: const TextStyle(
-                                  color: AppColors.tangerine,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[3],
-                                style: const TextStyle(
-                                  color: AppColors.greenAccentLight,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                          const SizedBox(
+                            height: 44,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 44,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              fontFamily: bodyFont,
-                              color: AppColors.shadowGrey.shade700,
-                              wordSpacing: -1,
-                              fontSize: 20,
+                          RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontFamily: bodyFont,
+                                color: AppColors.shadowGrey.shade700,
+                                wordSpacing: -1,
+                                fontSize: 20,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: aboutMeTexts[4],
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[5],
+                                  style: const TextStyle(
+                                    color: AppColors.lightTeal,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[6],
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[7],
+                                  style: const TextStyle(
+                                    color: AppColors.seaBlue,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[8],
+                                ),
+                              ],
                             ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: aboutMeTexts[4],
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[5],
-                                style: const TextStyle(
-                                  color: AppColors.lightTeal,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[6],
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[7],
-                                style: const TextStyle(
-                                  color: AppColors.seaBlue,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[8],
-                              ),
-                            ],
                           ),
-                        ),
-                        const SizedBox(
-                          height: 44,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              fontFamily: bodyFont,
-                              color: AppColors.shadowGrey.shade700,
-                              wordSpacing: -1,
-                              fontSize: 20,
+                          const SizedBox(
+                            height: 44,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontFamily: bodyFont,
+                                color: AppColors.shadowGrey.shade700,
+                                wordSpacing: -1,
+                                fontSize: 20,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: aboutMeTexts[9],
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[10],
+                                  style: const TextStyle(
+                                    color: AppColors.lightTeal,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: aboutMeTexts[9],
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[10],
-                                style: const TextStyle(
-                                  color: AppColors.lightTeal,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
                           ),
-                        ),
-                        const SizedBox(
-                          height: 44,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              fontFamily: bodyFont,
-                              color: AppColors.shadowGrey.shade700,
-                              wordSpacing: -1,
-                              fontSize: 20,
+                          const SizedBox(
+                            height: 44,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontFamily: bodyFont,
+                                color: AppColors.shadowGrey.shade700,
+                                wordSpacing: -1,
+                                fontSize: 20,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: aboutMeTexts[11],
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[12],
+                                  style: const TextStyle(
+                                    color: AppColors.redAccent,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: aboutMeTexts[13],
+                                ),
+                              ],
                             ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: aboutMeTexts[11],
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[12],
-                                style: const TextStyle(
-                                  color: AppColors.redAccent,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: aboutMeTexts[13],
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 200,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: LayoutBuilder(
-                            builder: (context, constraints) => Image.asset(
-                              meIMG,
-                              fit: BoxFit.scaleDown,
-                              width: constraints.maxWidth,
+                    const SizedBox(
+                      width: 200,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          SizedBox(
+                            width: double.infinity,
+                            child: LayoutBuilder(
+                              builder: (context, constraints) => Image.asset(
+                                meIMG,
+                                fit: BoxFit.scaleDown,
+                                width: constraints.maxWidth,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          aboutMeTexts[14],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontFamily: bodyFont,
-                            color: AppColors.lightTeal,
-                            fontWeight: FontWeight.bold,
-                            wordSpacing: -1,
-                            fontSize: 16,
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ),
-                      ],
+                          Text(
+                            aboutMeTexts[14],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontFamily: bodyFont,
+                              color: AppColors.lightTeal,
+                              fontWeight: FontWeight.bold,
+                              wordSpacing: -1,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          // const SizedBox(
-          //   width: 140,
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 100),
-          //   child:
-          // ),
-          const SizedBox(
-            width: 300,
-          )
-        ],
+            // const SizedBox(
+            //   width: 140,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 100),
+            //   child:
+            // ),
+            const SizedBox(
+              width: 300,
+            )
+          ],
+        ),
       ),
     );
   }
