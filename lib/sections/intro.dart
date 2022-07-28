@@ -1,11 +1,12 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/hoverable_button.dart';
 
 class IntroSection extends StatefulWidget {
-  const IntroSection({Key? key}) : super(key: key);
+  final VoidCallback scrollCallback;
+
+  const IntroSection({required this.scrollCallback, Key? key})
+      : super(key: key);
 
   @override
   State<IntroSection> createState() => _IntroSectionState();
@@ -83,9 +84,7 @@ class _IntroSectionState extends State<IntroSection> {
                   height: 48,
                 ),
                 HoverableButton(
-                  onPressed: () {
-                    log('About me button was Tapped');
-                  },
+                  onPressed: widget.scrollCallback,
                 ),
               ],
             ),
