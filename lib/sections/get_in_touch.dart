@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/resources/resources.dart';
+import 'package:portfolio/widgets/hoverable.dart';
 
 class GetInTouchSection extends StatefulWidget {
   const GetInTouchSection({Key? key}) : super(key: key);
@@ -10,6 +13,8 @@ class GetInTouchSection extends StatefulWidget {
 }
 
 class _GetInTouchSectionState extends State<GetInTouchSection> {
+  bool isHovering = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,24 +56,51 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
             height: 72,
           ),
           Center(
-            child: Container(
-              padding: const EdgeInsets.only(bottom: 8),
-              decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-                  width: 5,
-                  color: AppColors.shadowGrey.shade50,
-                )),
-              ),
-              child: Text(
-                getInTouchEmail,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: headingFont,
-                  fontSize: 24,
-                  letterSpacing: -0.6,
-                  wordSpacing: -2,
-                  color: AppColors.shadowGrey.shade50,
+            child: Hoverable(
+              yOffset: -8,
+              child: MouseRegion(
+                onEnter: ((event) {
+                  setState(() {
+                    isHovering = true;
+                  });
+                }),
+                onExit: ((event) {
+                  setState(() {
+                    isHovering = false;
+                  });
+                }),
+                child: TextButton(
+                  style: ButtonStyle(
+                    overlayColor: MaterialStateProperty.all(Colors.transparent),
+                  ),
+                  onPressed: () {
+                    log('Email was clicked');
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Container(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            width: 5,
+                            color: AppColors.shadowGrey.shade50,
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        getInTouchEmail,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: headingFont,
+                          fontSize: 24,
+                          letterSpacing: -0.6,
+                          wordSpacing: -2,
+                          color: AppColors.shadowGrey.shade50,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -79,11 +111,35 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(githubIconSVG),
+              Hoverable(
+                child: TextButton(
+                    onPressed: () {
+                      log('Email was clicked');
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: SvgPicture.asset(
+                        githubIconSVG,
+                        height: 32,
+                      ),
+                    )),
+              ),
               const SizedBox(
                 width: 40,
               ),
-              SvgPicture.asset(instagramIconSVG),
+              Hoverable(
+                child: TextButton(
+                    onPressed: () {
+                      log('Email was clicked');
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: SvgPicture.asset(
+                        instagramIconSVG,
+                        height: 32,
+                      ),
+                    )),
+              ),
             ],
           ),
           const SizedBox(

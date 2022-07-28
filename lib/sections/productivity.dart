@@ -25,6 +25,12 @@ class _ProductivitySectionState extends State<ProductivitySection>
   }
 
   @override
+  void dispose() {
+    lottieAnimationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.shadowGrey.shade100,

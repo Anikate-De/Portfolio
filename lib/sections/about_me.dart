@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/resources/resources.dart';
+import 'package:portfolio/widgets/widgets.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class AboutMeSection extends StatefulWidget {
@@ -19,6 +20,12 @@ class _AboutMeSectionState extends State<AboutMeSection>
   void initState() {
     super.initState();
     animationController = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -233,13 +240,16 @@ class _AboutMeSectionState extends State<AboutMeSection>
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          SizedBox(
-                            width: double.infinity,
-                            child: LayoutBuilder(
-                              builder: (context, constraints) => Image.asset(
-                                meIMG,
-                                fit: BoxFit.scaleDown,
-                                width: constraints.maxWidth,
+                          Hoverable(
+                            yOffset: -10,
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: LayoutBuilder(
+                                builder: (context, constraints) => Image.asset(
+                                  meIMG,
+                                  fit: BoxFit.scaleDown,
+                                  width: constraints.maxWidth,
+                                ),
                               ),
                             ),
                           ),
