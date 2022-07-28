@@ -89,7 +89,16 @@ class _IntroSectionState extends State<IntroSection> {
               ],
             ),
           ),
-        )
+        ),
+        Positioned(
+          top: 48,
+          left: 48,
+          child: Image.asset(
+            logoIMG,
+            height: 48,
+            filterQuality: FilterQuality.high,
+          ),
+        ),
       ],
     );
   }
