@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/hoverable.dart';
 
@@ -114,13 +113,14 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
               Hoverable(
                 child: TextButton(
                     onPressed: () {
-                      log('Email was clicked');
+                      log('Github was clicked');
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: SvgPicture.asset(
-                        githubIconSVG,
+                      child: Image.asset(
+                        githubIconIMG,
                         height: 32,
+                        filterQuality: FilterQuality.none,
                       ),
                     )),
               ),
@@ -130,13 +130,14 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
               Hoverable(
                 child: TextButton(
                     onPressed: () {
-                      log('Email was clicked');
+                      log('Instagram was clicked');
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: SvgPicture.asset(
-                        instagramIconSVG,
+                      child: Image.asset(
+                        instagramIconIMG,
                         height: 32,
+                        filterQuality: FilterQuality.none,
                       ),
                     )),
               ),
