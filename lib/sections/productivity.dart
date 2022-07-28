@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/resources/resources.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 import '../widgets/widgets.dart';
 
@@ -11,7 +12,24 @@ class ProductivitySection extends StatefulWidget {
   State<ProductivitySection> createState() => _ProductivitySectionState();
 }
 
-class _ProductivitySectionState extends State<ProductivitySection> {
+class _ProductivitySectionState extends State<ProductivitySection>
+    with SingleTickerProviderStateMixin {
+  late AnimationController lottieAnimationController;
+
+  bool rightArrowVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    lottieAnimationController = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    lottieAnimationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +46,11 @@ class _ProductivitySectionState extends State<ProductivitySection> {
                 alignment: const Alignment(0.3, 0.5),
                 child: Lottie.asset(
                   rightArrowHeadLottie,
-                  animate: true,
+                  onLoaded: (composition) {
+                    lottieAnimationController.duration = composition.duration;
+                  },
+                  controller: lottieAnimationController,
+                  animate: false,
                   repeat: false,
                   width: 150,
                   fit: BoxFit.fitWidth,
@@ -116,127 +138,141 @@ class _ProductivitySectionState extends State<ProductivitySection> {
                     const SizedBox(
                       height: 230,
                     ),
-                    IntrinsicHeight(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                            color: AppColors.greenAccentLight,
-                                            width: 6),
-                                        right: BorderSide(
-                                            color: AppColors.greenAccentLight,
-                                            width: 6),
+                    VisibilityDetector(
+                      key: const Key('skills-section'),
+                      onVisibilityChanged: (visibilityInfo) {
+                        if (visibilityInfo.visibleFraction > 0.8 &&
+                            !rightArrowVisible) {
+                          rightArrowVisible = true;
+                          lottieAnimationController.forward(from: 0);
+                        } else if (visibilityInfo.visibleFraction == 0) {
+                          rightArrowVisible = false;
+                          lottieAnimationController.value = 0;
+                        }
+                      },
+                      child: IntrinsicHeight(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        border: Border(
+                                          bottom: BorderSide(
+                                              color: AppColors.greenAccentLight,
+                                              width: 6),
+                                          right: BorderSide(
+                                              color: AppColors.greenAccentLight,
+                                              width: 6),
+                                        ),
+                                      ),
+                                      padding: const EdgeInsets.only(
+                                          right: 16, bottom: 16),
+                                      child: Text(
+                                        skillsMainText,
+                                        style: TextStyle(
+                                          fontFamily: headingFont,
+                                          fontSize: 24,
+                                          letterSpacing: -0.6,
+                                          wordSpacing: -2,
+                                          color: AppColors.shadowGrey.shade700,
+                                        ),
                                       ),
                                     ),
-                                    padding: const EdgeInsets.only(
-                                        right: 16, bottom: 16),
-                                    child: Text(
-                                      skillsMainText,
+                                  ),
+                                  const SizedBox(
+                                    height: 72,
+                                  ),
+                                  RichText(
+                                    text: TextSpan(
                                       style: TextStyle(
-                                        fontFamily: headingFont,
-                                        fontSize: 24,
-                                        letterSpacing: -0.6,
-                                        wordSpacing: -2,
+                                        fontFamily: bodyFont,
                                         color: AppColors.shadowGrey.shade700,
+                                        wordSpacing: -1,
+                                        fontSize: 20,
                                       ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 72,
-                                ),
-                                RichText(
-                                  text: TextSpan(
-                                    style: TextStyle(
-                                      fontFamily: bodyFont,
-                                      color: AppColors.shadowGrey.shade700,
-                                      wordSpacing: -1,
-                                      fontSize: 20,
-                                    ),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: skillsTexts[0],
-                                      ),
-                                      TextSpan(
-                                        text: skillsTexts[1],
-                                        style: const TextStyle(
-                                          color: AppColors.greenAccentLight,
-                                          fontWeight: FontWeight.bold,
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: skillsTexts[0],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 44,
-                                ),
-                                RichText(
-                                  text: TextSpan(
-                                    style: TextStyle(
-                                      fontFamily: bodyFont,
-                                      color: AppColors.shadowGrey.shade700,
-                                      wordSpacing: -1,
-                                      fontSize: 20,
-                                    ),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: skillsTexts[2],
-                                      ),
-                                      TextSpan(
-                                        text: skillsTexts[3],
-                                        style: const TextStyle(
-                                          color: AppColors.seaBlue,
-                                          fontWeight: FontWeight.bold,
+                                        TextSpan(
+                                          text: skillsTexts[1],
+                                          style: const TextStyle(
+                                            color: AppColors.greenAccentLight,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                      TextSpan(
-                                        text: skillsTexts[4],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 100,
-                          ),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Expanded(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: SkillListBox(),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 36,
-                                ),
-                                Expanded(
-                                  child: Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: SkillListBox(
-                                      color: AppColors.greenAccentDark,
-                                      title: skillSetBText,
-                                      list: setBSkillsList,
+                                      ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(
+                                    height: 44,
+                                  ),
+                                  RichText(
+                                    text: TextSpan(
+                                      style: TextStyle(
+                                        fontFamily: bodyFont,
+                                        color: AppColors.shadowGrey.shade700,
+                                        wordSpacing: -1,
+                                        fontSize: 20,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: skillsTexts[2],
+                                        ),
+                                        TextSpan(
+                                          text: skillsTexts[3],
+                                          style: const TextStyle(
+                                            color: AppColors.seaBlue,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: skillsTexts[4],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(
+                              width: 100,
+                            ),
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: const [
+                                  Expanded(
+                                    child: Align(
+                                      alignment: Alignment.topLeft,
+                                      child: SkillListBox(),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 36,
+                                  ),
+                                  Expanded(
+                                    child: Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: SkillListBox(
+                                        color: AppColors.greenAccentDark,
+                                        title: skillSetBText,
+                                        list: setBSkillsList,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

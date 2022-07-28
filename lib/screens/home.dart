@@ -21,6 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -42,7 +48,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 controller: scrollController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  SizedBox(height: height, child: const IntroSection()),
+                  SizedBox(
+                      height: height,
+                      child: IntroSection(
+                        scrollCallback: () {
+                          scrollController.animateTo(height,
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.easeInOutQuart);
+                        },
+                      )),
                   const AboutMeSection(),
                   const MoreSection(),
                   const ProductivitySection(),
