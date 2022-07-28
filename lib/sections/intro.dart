@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/hoverable_button.dart';
 
@@ -17,9 +16,12 @@ class _IntroSectionState extends State<IntroSection> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SvgPicture.asset(
-          homeBGSVG,
-          fit: BoxFit.cover,
+        Positioned.fill(
+          child: Image.asset(
+            homeBGIMG,
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.none,
+          ),
         ),
         Positioned.fill(
           child: Padding(

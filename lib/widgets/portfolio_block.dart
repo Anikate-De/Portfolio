@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/resources/resources.dart';
 
 class PortfolioBlock extends StatefulWidget {
@@ -36,9 +35,10 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                 child: Stack(
                   children: [
                     Positioned.fill(
-                      child: SvgPicture.asset(
-                        meSVG,
+                      child: Image.asset(
+                        meIMG,
                         fit: BoxFit.fitWidth,
+                        filterQuality: FilterQuality.none,
                       ),
                     ),
                     Positioned.fill(

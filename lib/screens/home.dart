@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/sections/sections.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
@@ -27,9 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          SvgPicture.asset(
-            parallaxBGSVG,
-            fit: BoxFit.fitWidth,
+          Positioned.fill(
+            child: Image.asset(
+              parallaxBGIMG,
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.none,
+            ),
           ),
           Center(
             child: WebSmoothScroll(
