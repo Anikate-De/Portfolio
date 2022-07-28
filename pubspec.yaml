@@ -38,6 +38,7 @@ dependencies:
   flutter_svg: ^1.1.1+1
   web_smooth_scroll: ^1.0.0
   visibility_detector: ^0.3.3
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/hoverable.dart';
@@ -87,16 +88,23 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                           ),
                         ),
                       ),
-                      child: Text(
-                        getInTouchEmail,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: headingFont,
-                          fontSize: 24,
-                          letterSpacing: -0.6,
-                          wordSpacing: -2,
-                          color: AppColors.shadowGrey.shade50,
-                        ),
+                      child: AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            getInTouchEmail,
+                            speed: kThemeChangeDuration,
+                            textStyle: TextStyle(
+                              fontFamily: headingFont,
+                              fontSize: 24,
+                              letterSpacing: -0.6,
+                              wordSpacing: -2,
+                              color: AppColors.shadowGrey.shade50,
+                            ),
+                            textAlign: TextAlign.center,
+                            curve: Curves.easeInOut,
+                          ),
+                        ],
                       ),
                     ),
                   ),
