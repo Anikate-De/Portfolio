@@ -39,6 +39,7 @@ dependencies:
   web_smooth_scroll: ^1.0.0
   visibility_detector: ^0.3.3
   animated_text_kit: ^4.2.2
+  flutter_staggered_animations: ^1.0.0
 
 dev_dependencies:
   flutter_test:
