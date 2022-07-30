@@ -128,7 +128,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                       child: Image.asset(
                         githubIconIMG,
                         height: 32,
-                        filterQuality: FilterQuality.none,
+                        filterQuality: FilterQuality.high,
                       ),
                     )),
               ),
@@ -145,7 +145,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                       child: Image.asset(
                         instagramIconIMG,
                         height: 32,
-                        filterQuality: FilterQuality.none,
+                        filterQuality: FilterQuality.high,
                       ),
                     )),
               ),
