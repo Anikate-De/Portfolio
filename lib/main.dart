@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
         switch (routeSettings.name) {
           case HomeScreen.routeId:
             return CustomPageRoute(
-                child: const HomeScreen(), settings: routeSettings);
+                child: HomeScreen(bgImg: routeSettings.arguments as Image),
+                settings: routeSettings);
           default:
             return MaterialPageRoute(
                 builder: (context) => const SplashScreen(),

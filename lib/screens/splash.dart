@@ -16,15 +16,23 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _logoController;
 
+  late Image bgImage;
+
   @override
   void initState() {
     super.initState();
     _logoController = AnimationController(vsync: this);
     _logoController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        Navigator.pushReplacementNamed(context, HomeScreen.routeId);
+        Navigator.pushReplacementNamed(context, HomeScreen.routeId,
+            arguments: bgImage);
       }
     });
+    bgImage = Image.asset(
+      homeBGIMG,
+      fit: BoxFit.cover,
+      filterQuality: FilterQuality.none,
+    );
   }
 
   @override
@@ -39,6 +47,8 @@ class _SplashScreenState extends State<SplashScreen>
             _logoController
               ..duration = composition.duration
               ..forward();
+
+            precacheImage(bgImage.image, context);
           },
           height: 100,
           fit: BoxFit.fitHeight,

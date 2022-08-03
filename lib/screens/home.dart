@@ -6,7 +6,9 @@ import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 class HomeScreen extends StatefulWidget {
   static const String routeId = 'home';
 
-  const HomeScreen({Key? key}) : super(key: key);
+  final Image bgImg;
+
+  const HomeScreen({required this.bgImg, Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -51,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                       height: height,
                       child: IntroSection(
+                        introBGIMGWidget: widget.bgImg,
                         scrollCallback: () {
                           scrollController.animateTo(height,
                               duration: const Duration(milliseconds: 400),

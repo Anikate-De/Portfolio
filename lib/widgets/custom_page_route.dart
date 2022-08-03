@@ -19,6 +19,6 @@ class CustomPageRoute extends PageRouteBuilder {
       SlideTransition(
           position: animation.drive(
               Tween(begin: const Offset(0, 1), end: const Offset(0, 0))
-                  .chain(CurveTween(curve: Curves.easeInOutQuart))),
+                  .chain(CurveTween(curve: Curves.easeInOut))),
           child: child);
 }
