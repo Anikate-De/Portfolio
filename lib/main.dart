@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/screens/screens.dart';
-import 'package:portfolio/widgets/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Anikate De',
       theme: ThemeData(
         primarySwatch: AppColors.shadowGrey,
       ),
@@ -22,8 +21,9 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (routeSettings) {
         switch (routeSettings.name) {
           case HomeScreen.routeId:
-            return CustomPageRoute(
-                child: HomeScreen(bgImg: routeSettings.arguments as Image),
+            return MaterialPageRoute(
+                builder: (context) =>
+                    HomeScreen(bgImg: routeSettings.arguments as Image),
                 settings: routeSettings);
           default:
             return MaterialPageRoute(
