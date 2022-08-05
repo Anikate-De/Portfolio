@@ -6,21 +6,24 @@ class MoreSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Container(
       color: Colors.transparent,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 300, vertical: 120),
+        padding: EdgeInsets.symmetric(
+            horizontal: width > 500 ? width / 5.33 : 60, vertical: 120),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               moreTexts[0],
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: bodyFont,
                 color: AppColors.shadowGrey.shade200,
                 fontWeight: FontWeight.bold,
                 wordSpacing: -1,
-                fontSize: 26,
+                fontSize: width > 500 ? 26 : 20,
               ),
             ),
             const SizedBox(
@@ -28,15 +31,17 @@ class MoreSection extends StatelessWidget {
             ),
             Text(
               moreTexts[1],
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: headingFont,
                 color: AppColors.shadowGrey.shade200,
                 wordSpacing: -1,
-                fontSize: 22,
+                fontSize: width > 500 ? 22 : 20,
+                height: 1.6,
               ),
             ),
-            const SizedBox(
-              height: 36,
+            SizedBox(
+              height: width > 500 ? 36 : 70,
             ),
             Text(
               moreTexts[2],
@@ -44,7 +49,7 @@ class MoreSection extends StatelessWidget {
                 fontFamily: headingFont,
                 color: AppColors.shadowGrey.shade50,
                 wordSpacing: -1,
-                fontSize: 42,
+                fontSize: width > 500 ? 42 : 38,
               ),
             ),
             const SizedBox(
