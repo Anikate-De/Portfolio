@@ -41,7 +41,7 @@ class _IntroSectionState extends State<IntroSection> {
                   style: TextStyle(
                     fontFamily: headingFont,
                     color: AppColors.shadowGrey.shade300,
-                    fontSize: 18,
+                    fontSize: width > 500 ? 18 : 14,
                     letterSpacing: -0.6,
                     wordSpacing: -2,
                   ),
@@ -62,7 +62,7 @@ class _IntroSectionState extends State<IntroSection> {
                             textStyle: TextStyle(
                               fontFamily: centerOfAttractionFont,
                               color: AppColors.shadowGrey.shade50,
-                              fontSize: 50,
+                              fontSize: width > 500 ? 50 : 40,
                             ),
                             curve: Curves.easeInOut,
                           ),
@@ -74,7 +74,7 @@ class _IntroSectionState extends State<IntroSection> {
                         style: TextStyle(
                           fontFamily: centerOfAttractionFont,
                           color: AppColors.shadowGrey.shade50,
-                          fontSize: 50,
+                          fontSize: width > 500 ? 50 : 40,
                         ),
                       );
                     }
@@ -88,7 +88,7 @@ class _IntroSectionState extends State<IntroSection> {
                   style: TextStyle(
                     fontFamily: headingFont,
                     color: AppColors.shadowGrey.shade100,
-                    fontSize: 32,
+                    fontSize: width > 500 ? 32 : 24,
                     letterSpacing: -0.6,
                     wordSpacing: -2,
                   ),
@@ -101,7 +101,7 @@ class _IntroSectionState extends State<IntroSection> {
                   style: TextStyle(
                       fontFamily: headingFont,
                       color: AppColors.shadowGrey.shade200,
-                      fontSize: 18,
+                      fontSize: width > 500 ? 18 : 14,
                       letterSpacing: -0.8,
                       wordSpacing: -2.4,
                       height: 1.4),
@@ -121,7 +121,7 @@ class _IntroSectionState extends State<IntroSection> {
           left: 60,
           child: Image.asset(
             logoIMG,
-            width: 100,
+            width: width > 500 ? 100 : 75,
             filterQuality: FilterQuality.high,
           ),
         ),
