@@ -30,15 +30,19 @@ class _AboutMeSectionState extends State<AboutMeSection>
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double fontSize = width > 500 ? 20 : 18;
     return VisibilityDetector(
       key: const Key('about-me-section'),
       onVisibilityChanged: (visibilityInfo) {
-        if (visibilityInfo.visibleFraction > 0 && !downArrowVisible) {
-          downArrowVisible = true;
-          animationController.forward(from: 0);
-        } else if (visibilityInfo.visibleFraction == 0) {
-          downArrowVisible = false;
-          animationController.value = 0;
+        if (width > 500) {
+          if (visibilityInfo.visibleFraction > 0 && !downArrowVisible) {
+            downArrowVisible = true;
+            animationController.forward(from: 0);
+          } else if (visibilityInfo.visibleFraction == 0) {
+            downArrowVisible = false;
+            animationController.value = 0;
+          }
         }
       },
       child: Container(
@@ -48,25 +52,29 @@ class _AboutMeSectionState extends State<AboutMeSection>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: 300,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Lottie.asset(
-                  downArrowHeadLottie,
-                  onLoaded: (composition) {
-                    animationController.duration = composition.duration;
-                  },
-                  animate: false,
-                  controller: animationController,
-                  repeat: false,
-                  width: 100,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
+              width: width > 500 ? width / 5.33 : 60,
+              child: width > 500
+                  ? Align(
+                      alignment: Alignment.topCenter,
+                      child: Lottie.asset(
+                        downArrowHeadLottie,
+                        onLoaded: (composition) {
+                          animationController.duration = composition.duration;
+                        },
+                        animate: false,
+                        controller: animationController,
+                        repeat: false,
+                        width: 100,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    )
+                  : null,
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(top: 160.0, bottom: 160),
+                padding: EdgeInsets.only(
+                    top: width > 500 ? 160.0 : 100,
+                    bottom: width > 500 ? 160 : 120),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -91,7 +99,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                               aboutMeMainText,
                               style: TextStyle(
                                 fontFamily: headingFont,
-                                fontSize: 24,
+                                fontSize: width > 500 ? 24 : 20,
                                 letterSpacing: -0.6,
                                 wordSpacing: -2,
                                 color: AppColors.shadowGrey.shade700,
@@ -107,7 +115,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                                 fontFamily: bodyFont,
                                 color: AppColors.shadowGrey.shade700,
                                 wordSpacing: -1,
-                                fontSize: 20,
+                                fontSize: fontSize,
                               ),
                               children: <TextSpan>[
                                 TextSpan(
@@ -146,7 +154,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                                 fontFamily: bodyFont,
                                 color: AppColors.shadowGrey.shade700,
                                 wordSpacing: -1,
-                                fontSize: 20,
+                                fontSize: fontSize,
                               ),
                               children: <TextSpan>[
                                 TextSpan(
@@ -184,7 +192,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                                 fontFamily: bodyFont,
                                 color: AppColors.shadowGrey.shade700,
                                 wordSpacing: -1,
-                                fontSize: 20,
+                                fontSize: fontSize,
                               ),
                               children: <TextSpan>[
                                 TextSpan(
@@ -209,7 +217,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                                 fontFamily: bodyFont,
                                 color: AppColors.shadowGrey.shade700,
                                 wordSpacing: -1,
-                                fontSize: 20,
+                                fontSize: fontSize,
                               ),
                               children: <TextSpan>[
                                 TextSpan(
@@ -231,58 +239,56 @@ class _AboutMeSectionState extends State<AboutMeSection>
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      width: 200,
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Hoverable(
-                            yOffset: -10,
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: LayoutBuilder(
-                                builder: (context, constraints) => Image.asset(
-                                  meIMG,
-                                  fit: BoxFit.scaleDown,
-                                  width: constraints.maxWidth,
+                    width > 500
+                        ? const SizedBox(
+                            width: 200,
+                          )
+                        : const SizedBox.shrink(),
+                    width > 500
+                        ? Expanded(
+                            flex: 1,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Hoverable(
+                                  yOffset: -10,
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    child: LayoutBuilder(
+                                      builder: (context, constraints) =>
+                                          Image.asset(
+                                        meIMG,
+                                        fit: BoxFit.scaleDown,
+                                        width: constraints.maxWidth,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  aboutMeTexts[14],
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontFamily: bodyFont,
+                                    color: AppColors.lightTeal,
+                                    fontWeight: FontWeight.bold,
+                                    wordSpacing: -1,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            aboutMeTexts[14],
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontFamily: bodyFont,
-                              color: AppColors.lightTeal,
-                              fontWeight: FontWeight.bold,
-                              wordSpacing: -1,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                          )
+                        : const SizedBox.shrink(),
                   ],
                 ),
               ),
             ),
-            // const SizedBox(
-            //   width: 140,
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 100),
-            //   child:
-            // ),
-            const SizedBox(
-              width: 300,
+            SizedBox(
+              width: width > 500 ? width / 5.33 : 60,
             )
           ],
         ),
