@@ -22,6 +22,7 @@ class _IntroSectionState extends State<IntroSection> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Positioned.fill(
@@ -29,7 +30,8 @@ class _IntroSectionState extends State<IntroSection> {
         ),
         Positioned.fill(
           child: Padding(
-            padding: const EdgeInsets.only(left: 300, right: 200),
+            padding: EdgeInsets.symmetric(
+                horizontal: width > 500 ? width / 5.33 : 60),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,12 +99,12 @@ class _IntroSectionState extends State<IntroSection> {
                 Text(
                   introPageTexts[3],
                   style: TextStyle(
-                    fontFamily: headingFont,
-                    color: AppColors.shadowGrey.shade200,
-                    fontSize: 19,
-                    letterSpacing: -0.6,
-                    wordSpacing: -2,
-                  ),
+                      fontFamily: headingFont,
+                      color: AppColors.shadowGrey.shade200,
+                      fontSize: 18,
+                      letterSpacing: -0.8,
+                      wordSpacing: -2.4,
+                      height: 1.4),
                 ),
                 const SizedBox(
                   height: 48,
@@ -115,11 +117,11 @@ class _IntroSectionState extends State<IntroSection> {
           ),
         ),
         Positioned(
-          top: 48,
-          left: 48,
+          top: 60,
+          left: 60,
           child: Image.asset(
             logoIMG,
-            height: 48,
+            width: 100,
             filterQuality: FilterQuality.high,
           ),
         ),
