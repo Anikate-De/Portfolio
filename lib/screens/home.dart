@@ -1,7 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/sections/sections.dart';
-import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeId = 'home';
@@ -42,10 +42,35 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Center(
-            child: WebSmoothScroll(
-              animationDuration: 400,
-              scrollOffset: 75,
-              controller: scrollController,
+            child: Listener(
+              onPointerSignal: (pointerSignal) {
+                if (pointerSignal is PointerScrollEvent) {
+                  double scroll = pointerSignal.scrollDelta.dy;
+                  if (pointerSignal.scrollDelta.dy.abs() >= 100) {
+                    if (scroll > 0) {
+                      // Adding the extra offset to over scroll done by user
+                      scroll = (scrollController.offset + scroll + 75);
+                    } else {
+                      scroll = (scrollController.offset + scroll - 75);
+                    }
+                  } else {
+                    scroll += scrollController.offset;
+                  }
+
+                  if (scroll > scrollController.position.maxScrollExtent) {
+                    scroll = scrollController.position.maxScrollExtent;
+                  } else if (scroll < 0) {
+                    scroll = 0;
+                  }
+                  if (pointerSignal.scrollDelta.dy.abs() >= 100) {
+                    scrollController.animateTo(scroll,
+                        duration: const Duration(milliseconds: 50),
+                        curve: Curves.linear);
+                  } else {
+                    scrollController.jumpTo(scroll);
+                  }
+                }
+              },
               child: ListView(
                 controller: scrollController,
                 physics: const NeverScrollableScrollPhysics(),
