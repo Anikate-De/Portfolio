@@ -32,6 +32,8 @@ class _ProductivitySectionState extends State<ProductivitySection>
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double fontSize = width > 500 ? 20 : 18;
     return Container(
       color: AppColors.shadowGrey.shade100,
       child: Padding(
@@ -41,25 +43,30 @@ class _ProductivitySectionState extends State<ProductivitySection>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              width: 300,
-              child: Align(
-                alignment: const Alignment(0.3, 0.5),
-                child: Lottie.asset(
-                  rightArrowHeadLottie,
-                  onLoaded: (composition) {
-                    lottieAnimationController.duration = composition.duration;
-                  },
-                  controller: lottieAnimationController,
-                  animate: false,
-                  repeat: false,
-                  width: 150,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
+              width: width > 500 ? width / 5.33 : 60,
+              child: width > 500
+                  ? Align(
+                      alignment: const Alignment(0.3, 0.5),
+                      child: Lottie.asset(
+                        rightArrowHeadLottie,
+                        onLoaded: (composition) {
+                          lottieAnimationController.duration =
+                              composition.duration;
+                        },
+                        controller: lottieAnimationController,
+                        animate: false,
+                        repeat: false,
+                        width: 150,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    )
+                  : null,
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(top: 160, right: 300),
+                padding: EdgeInsets.only(
+                    top: width > 500 ? 160 : 100,
+                    right: width > 500 ? width / 5.33 : 60),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -84,7 +91,7 @@ class _ProductivitySectionState extends State<ProductivitySection>
                               whatIOfferMainText,
                               style: TextStyle(
                                 fontFamily: headingFont,
-                                fontSize: 24,
+                                fontSize: width > 500 ? 24 : 20,
                                 letterSpacing: -0.6,
                                 wordSpacing: -2,
                                 color: AppColors.shadowGrey.shade700,
@@ -101,43 +108,72 @@ class _ProductivitySectionState extends State<ProductivitySection>
                             fontFamily: bodyFont,
                             color: AppColors.shadowGrey.shade700,
                             wordSpacing: -1,
-                            fontSize: 20,
+                            fontSize: fontSize,
                           ),
                         ),
                         const SizedBox(
                           height: 48,
                         ),
-                        Table(
-                          columnWidths: const {
-                            0: FlexColumnWidth(3),
-                            1: FlexColumnWidth(1),
-                            2: FlexColumnWidth(3),
-                          },
-                          children: [
-                            TableRow(children: [
-                              BulletPointText(text: whatIOfferPointsList[0]),
-                              const SizedBox(width: 30),
-                              BulletPointText(text: whatIOfferPointsList[1]),
-                            ]),
-                            const TableRow(children: [
-                              SizedBox(height: 20),
-                              SizedBox(width: 30),
-                              SizedBox(
-                                height: 20,
+                        width > 500
+                            ? Table(
+                                columnWidths: const {
+                                  0: FlexColumnWidth(3),
+                                  1: FlexColumnWidth(1),
+                                  2: FlexColumnWidth(3),
+                                },
+                                children: [
+                                  TableRow(
+                                    children: [
+                                      BulletPointText(
+                                          text: whatIOfferPointsList[0]),
+                                      const SizedBox(width: 30),
+                                      BulletPointText(
+                                          text: whatIOfferPointsList[1]),
+                                    ],
+                                  ),
+                                  const TableRow(
+                                    children: [
+                                      SizedBox(height: 20),
+                                      SizedBox(width: 30),
+                                      SizedBox(
+                                        height: 20,
+                                      )
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      BulletPointText(
+                                          text: whatIOfferPointsList[2]),
+                                      const SizedBox(width: 30),
+                                      BulletPointText(
+                                          text: whatIOfferPointsList[3]),
+                                    ],
+                                  ),
+                                ],
                               )
-                            ]),
-                            TableRow(children: [
-                              BulletPointText(text: whatIOfferPointsList[2]),
-                              const SizedBox(width: 30),
-                              BulletPointText(text: whatIOfferPointsList[3]),
-                            ]),
-                          ],
-                        ),
+                            : Column(
+                                children: List.generate(
+                                  whatIOfferPointsList.length,
+                                  (index) => Column(
+                                    children: [
+                                      BulletPointText(
+                                        text: whatIOfferPointsList[index],
+                                        fontSize: fontSize,
+                                      ),
+                                      const SizedBox(
+                                        height: 30,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 230,
+                    SizedBox(
+                      height: width > 500 ? 230.0 : 140,
                     ),
+
+                    //! SKILLS SECTIOn
                     VisibilityDetector(
                       key: const Key('skills-section'),
                       onVisibilityChanged: (visibilityInfo) {

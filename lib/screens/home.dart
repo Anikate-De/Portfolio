@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                   if (pointerSignal.scrollDelta.dy.abs() >= 100) {
                     scrollController.animateTo(scroll,
-                        duration: const Duration(milliseconds: 50),
+                        duration: const Duration(milliseconds: 75),
                         curve: Curves.linear);
                   } else {
                     scrollController.jumpTo(scroll);
@@ -74,27 +74,27 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView(
                 controller: scrollController,
                 physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  SizedBox(
-                      height: height,
-                      child: IntroSection(
-                        introBGIMGWidget: widget.bgImg ??
-                            Image.asset(
-                              homeBGIMG,
-                              fit: BoxFit.cover,
-                              filterQuality: FilterQuality.none,
-                            ),
-                        scrollCallback: () {
-                          scrollController.animateTo(height,
-                              duration: const Duration(milliseconds: 400),
-                              curve: Curves.easeInOutQuart);
-                        },
-                      )),
-                  const AboutMeSection(),
-                  const MoreSection(),
-                  const ProductivitySection(),
-                  const PortfolioSection(),
-                  const GetInTouchSection()
+                children: const [
+                  // SizedBox(
+                  //     height: height,
+                  //     child: IntroSection(
+                  //       introBGIMGWidget: widget.bgImg ??
+                  //           Image.asset(
+                  //             homeBGIMG,
+                  //             fit: BoxFit.cover,
+                  //             filterQuality: FilterQuality.none,
+                  //           ),
+                  //       scrollCallback: () {
+                  //         scrollController.animateTo(height,
+                  //             duration: const Duration(milliseconds: 400),
+                  //             curve: Curves.easeInOutQuart);
+                  //       },
+                  //     )),
+                  AboutMeSection(),
+                  MoreSection(),
+                  ProductivitySection(),
+                  // const PortfolioSection(),
+                  // const GetInTouchSection()
                 ],
               ),
             ),
