@@ -90,10 +90,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   //             curve: Curves.easeInOutQuart);
                   //       },
                   //     )),
-                  AboutMeSection(),
-                  MoreSection(),
-                  ProductivitySection(),
-                  // const PortfolioSection(),
+                  // AboutMeSection(),
+                  // MoreSection(),
+                  // ProductivitySection(),
+                  PortfolioSection(),
                   // const GetInTouchSection()
                 ],
               ),

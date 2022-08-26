@@ -38,7 +38,7 @@ class _ProductivitySectionState extends State<ProductivitySection>
     return Container(
       color: AppColors.shadowGrey.shade100,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 160),
+        padding: EdgeInsets.only(bottom: width > 500 ? 160 : 100),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
