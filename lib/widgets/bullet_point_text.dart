@@ -4,8 +4,10 @@ import 'dart:math' as math;
 
 class BulletPointText extends StatelessWidget {
   final String text;
+  final double fontSize;
 
-  const BulletPointText({required this.text, Key? key}) : super(key: key);
+  const BulletPointText({required this.text, this.fontSize = 20, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class BulletPointText extends StatelessWidget {
               fontFamily: bodyFont,
               color: AppColors.shadowGrey.shade700,
               wordSpacing: -1,
-              fontSize: 20,
+              fontSize: fontSize,
             ),
           ),
         ),

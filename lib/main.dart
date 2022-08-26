@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           case HomeScreen.routeId:
             return MaterialPageRoute(
                 builder: (context) =>
-                    HomeScreen(bgImg: routeSettings.arguments as Image),
+                    HomeScreen(bgImg: routeSettings.arguments as Image?),
                 settings: routeSettings);
           default:
             return MaterialPageRoute(

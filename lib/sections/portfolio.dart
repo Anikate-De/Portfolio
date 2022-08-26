@@ -7,8 +7,12 @@ class PortfolioSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double fontSize = width > 500 ? 20 : 18;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 300, vertical: 150),
+      padding: EdgeInsets.symmetric(
+          horizontal: width > 500 ? width / 5.33 : 60,
+          vertical: width > 500 ? 160 : 100),
       color: AppColors.shadowGrey.shade100,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -28,7 +32,7 @@ class PortfolioSection extends StatelessWidget {
                 portfolioMainText,
                 style: TextStyle(
                   fontFamily: headingFont,
-                  fontSize: 24,
+                  fontSize: width > 500 ? 24 : 20,
                   letterSpacing: -0.6,
                   wordSpacing: -2,
                   color: AppColors.shadowGrey.shade700,
@@ -36,24 +40,22 @@ class PortfolioSection extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 120,
+          SizedBox(
+            height: width > 500 ? 120 : 80,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const [
-              PortfolioBlock(),
+            children: [
+              PortfolioBlock(isMobileLayout: width <= 500),
               SizedBox(
-                height: 180,
+                height: width > 500 ? 180 : 80,
               ),
-              PortfolioBlock(
-                isAltLayout: true,
-              ),
+              PortfolioBlock(isAltLayout: true, isMobileLayout: width <= 500),
               SizedBox(
-                height: 180,
+                height: width > 500 ? 180 : 80,
               ),
-              PortfolioBlock(),
+              PortfolioBlock(isMobileLayout: width <= 500),
             ],
           )
         ],

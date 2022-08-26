@@ -22,6 +22,7 @@ class _IntroSectionState extends State<IntroSection> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Positioned.fill(
@@ -29,7 +30,8 @@ class _IntroSectionState extends State<IntroSection> {
         ),
         Positioned.fill(
           child: Padding(
-            padding: const EdgeInsets.only(left: 300, right: 200),
+            padding: EdgeInsets.symmetric(
+                horizontal: width > 500 ? width / 5.33 : 60),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +41,7 @@ class _IntroSectionState extends State<IntroSection> {
                   style: TextStyle(
                     fontFamily: headingFont,
                     color: AppColors.shadowGrey.shade300,
-                    fontSize: 18,
+                    fontSize: width > 500 ? 18 : 14,
                     letterSpacing: -0.6,
                     wordSpacing: -2,
                   ),
@@ -60,7 +62,7 @@ class _IntroSectionState extends State<IntroSection> {
                             textStyle: TextStyle(
                               fontFamily: centerOfAttractionFont,
                               color: AppColors.shadowGrey.shade50,
-                              fontSize: 50,
+                              fontSize: width > 500 ? 50 : 40,
                             ),
                             curve: Curves.easeInOut,
                           ),
@@ -72,7 +74,7 @@ class _IntroSectionState extends State<IntroSection> {
                         style: TextStyle(
                           fontFamily: centerOfAttractionFont,
                           color: AppColors.shadowGrey.shade50,
-                          fontSize: 50,
+                          fontSize: width > 500 ? 50 : 40,
                         ),
                       );
                     }
@@ -86,7 +88,7 @@ class _IntroSectionState extends State<IntroSection> {
                   style: TextStyle(
                     fontFamily: headingFont,
                     color: AppColors.shadowGrey.shade100,
-                    fontSize: 32,
+                    fontSize: width > 500 ? 32 : 24,
                     letterSpacing: -0.6,
                     wordSpacing: -2,
                   ),
@@ -97,12 +99,12 @@ class _IntroSectionState extends State<IntroSection> {
                 Text(
                   introPageTexts[3],
                   style: TextStyle(
-                    fontFamily: headingFont,
-                    color: AppColors.shadowGrey.shade200,
-                    fontSize: 19,
-                    letterSpacing: -0.6,
-                    wordSpacing: -2,
-                  ),
+                      fontFamily: headingFont,
+                      color: AppColors.shadowGrey.shade200,
+                      fontSize: width > 500 ? 18 : 14,
+                      letterSpacing: -0.8,
+                      wordSpacing: -2.4,
+                      height: 1.4),
                 ),
                 const SizedBox(
                   height: 48,
@@ -115,11 +117,11 @@ class _IntroSectionState extends State<IntroSection> {
           ),
         ),
         Positioned(
-          top: 48,
-          left: 48,
+          top: 60,
+          left: 60,
           child: Image.asset(
             logoIMG,
-            height: 48,
+            width: width > 500 ? 100 : 75,
             filterQuality: FilterQuality.high,
           ),
         ),

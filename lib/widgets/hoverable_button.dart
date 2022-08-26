@@ -27,6 +27,7 @@ class _HoverableButtonState extends State<HoverableButton> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return AnimatedContainer(
       duration: kThemeChangeDuration,
       transform: isHovering ? hoverTransform : nonHoverTransform,
@@ -46,8 +47,8 @@ class _HoverableButtonState extends State<HoverableButton> {
             }
           }),
           shadowColor: MaterialStateProperty.all(AppColors.shadowGrey.shade50),
-          padding: MaterialStateProperty.all(
-              const EdgeInsets.symmetric(horizontal: 36, vertical: 28)),
+          padding: MaterialStateProperty.all(EdgeInsets.symmetric(
+              horizontal: width > 500 ? 36 : 28, vertical: 28)),
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             if (states.any(interactiveStates.contains)) {
               return (AppColors.shadowGrey.shade500);
@@ -74,11 +75,11 @@ class _HoverableButtonState extends State<HoverableButton> {
             const ContinuousRectangleBorder(borderRadius: BorderRadius.zero),
           ),
         ),
-        child: const Text(
+        child: Text(
           aboutMeMainText,
           style: TextStyle(
             fontFamily: headingFont,
-            fontSize: 18,
+            fontSize: width > 500 ? 18 : 14,
             letterSpacing: -0.6,
             wordSpacing: -2,
           ),
