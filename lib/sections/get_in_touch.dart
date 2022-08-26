@@ -19,6 +19,8 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double fontSize = width > 500 ? 22 : 18;
     return VisibilityDetector(
       key: const Key('getInTouchSection'),
       onVisibilityChanged: (visibilityInfo) {
@@ -34,8 +36,11 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
       },
       child: Container(
         color: Colors.transparent,
-        padding:
-            const EdgeInsets.only(left: 400, right: 400, top: 140, bottom: 40),
+        padding: EdgeInsets.only(
+            left: width > 500 ? width / 5.33 : 80,
+            right: width > 500 ? width / 5.33 : 80,
+            top: width > 500 ? 140 : 110,
+            bottom: width > 500 ? 40 : 26),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -44,7 +49,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: headingFont,
-                fontSize: 26,
+                fontSize: width > 500 ? 26 : 22,
                 letterSpacing: -0.6,
                 wordSpacing: -2,
                 color: AppColors.shadowGrey.shade50,
@@ -54,21 +59,22 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
               height: 50,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 100),
+              padding: EdgeInsets.symmetric(
+                  horizontal: width > 500 ? width / 16 : 20),
               child: Text(
                 getInTouchText1,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: bodyFont,
-                  fontSize: 22,
+                  fontSize: fontSize,
                   letterSpacing: -0.6,
                   wordSpacing: -2,
                   color: AppColors.shadowGrey.shade300,
                 ),
               ),
             ),
-            const SizedBox(
-              height: 72,
+            SizedBox(
+              height: width > 500 ? 72 : 54,
             ),
             Center(
               child: Hoverable(
@@ -99,7 +105,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                         decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              width: 5,
+                              width: width > 500 ? 5 : 3,
                               color: AppColors.shadowGrey.shade50,
                             ),
                           ),
@@ -113,7 +119,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                                     speed: kThemeChangeDuration * 0.85,
                                     textStyle: TextStyle(
                                       fontFamily: headingFont,
-                                      fontSize: 24,
+                                      fontSize: width > 500 ? 24 : 14,
                                       letterSpacing: -0.6,
                                       wordSpacing: -2,
                                       color: AppColors.shadowGrey.shade50,
@@ -179,15 +185,15 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 72,
+            SizedBox(
+              height: width > 500 ? 72 : 54,
             ),
             Text(
               getInTouchBuiltWithText,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: bodyFont,
-                fontSize: 16,
+                fontSize: width > 500 ? 16 : 14,
                 letterSpacing: -0.6,
                 wordSpacing: -2,
                 color: AppColors.shadowGrey.shade300,

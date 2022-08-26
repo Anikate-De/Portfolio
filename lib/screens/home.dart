@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   // MoreSection(),
                   // ProductivitySection(),
                   PortfolioSection(),
-                  // const GetInTouchSection()
+                  GetInTouchSection()
                 ],
               ),
             ),
