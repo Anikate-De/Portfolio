@@ -193,7 +193,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: bodyFont,
-                fontSize: width > 500 ? 16 : 14,
+                fontSize: 16,
                 letterSpacing: -0.6,
                 wordSpacing: -2,
                 color: AppColors.shadowGrey.shade300,
