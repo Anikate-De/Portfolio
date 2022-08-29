@@ -1,4 +1,6 @@
 // * Intro Page
+import 'package:portfolio/models/models.dart';
+
 const List<String> introPageTexts = [
   'Hey visitor! I am...',
   'ANIKATE DE.',
@@ -75,3 +77,36 @@ const String getInTouchText1 =
     'Feel free to drop me an email or contact me via any of my social media handles below.';
 const String getInTouchEmail = 'de.anikate@gmail.com';
 const String getInTouchBuiltWithText = 'Built with Flutter 3\nby Anikate De';
+
+List<Project> portfolioProjects = [
+  Project(
+    name: 'Biscuit Beacon',
+    description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    skillsLearned: [
+      'Flutter',
+      'Google Maps',
+      'Firebase',
+    ],
+  ),
+  Project(
+    name: 'World\'s Best Dad',
+    description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    skillsLearned: [
+      'Flutter',
+      'Node.js REST API',
+      'Heroku WebHosting',
+    ],
+  ),
+  Project(
+    name: 'Chatty',
+    description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    skillsLearned: [
+      'Flutter',
+      'Firebase',
+      'OAuth 2.0',
+    ],
+  ),
+];

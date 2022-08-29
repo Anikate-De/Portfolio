@@ -1,15 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/models/models.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/widgets.dart';
 
 class PortfolioBlock extends StatefulWidget {
   final bool isAltLayout;
   final bool isMobileLayout;
+  final Project project;
 
   const PortfolioBlock({
     this.isAltLayout = false,
     this.isMobileLayout = false,
+    required this.project,
     Key? key,
   }) : super(key: key);
 
@@ -53,7 +56,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                       ),
                     ),
                     child: Text(
-                      'BISCUIT BEACON',
+                      widget.project.name.toUpperCase(),
                       style: TextStyle(
                         fontFamily: headingFont,
                         fontSize: 16,
@@ -72,7 +75,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                     ),
                     padding: const EdgeInsets.all(24),
                     child: Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                      widget.project.description,
                       textAlign:
                           widget.isAltLayout ? TextAlign.start : TextAlign.end,
                       style: TextStyle(
@@ -90,7 +93,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                     height: 12,
                   ),
                   Text(
-                    'Flutter (Dart) • Google Maps • Firebase',
+                    widget.project.skillsLearned.join(' • '),
                     style: TextStyle(
                       fontFamily: bodyFont,
                       fontSize: 12,
@@ -159,7 +162,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                       : CrossAxisAlignment.end,
                                   children: [
                                     Text(
-                                      'BISCUIT BEACON',
+                                      widget.project.name.toUpperCase(),
                                       style: TextStyle(
                                         fontFamily: headingFont,
                                         fontSize: 16,
@@ -180,7 +183,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                       ),
                                       padding: const EdgeInsets.all(20),
                                       child: AutoSizeText(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                                        widget.project.description,
                                         maxLines: 7,
                                         maxFontSize: 24,
                                         minFontSize: 12,
@@ -201,7 +204,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                       height: 20,
                                     ),
                                     Text(
-                                      'Flutter (Dart) • Google Maps • Firebase',
+                                      widget.project.skillsLearned.join(' • '),
                                       style: TextStyle(
                                         fontFamily: bodyFont,
                                         fontSize: 14,
@@ -222,7 +225,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                 : CrossAxisAlignment.end,
                             children: [
                               Text(
-                                'BISCUIT BEACON',
+                                widget.project.name.toUpperCase(),
                                 style: TextStyle(
                                   fontFamily: headingFont,
                                   fontSize: 16,
@@ -303,7 +306,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                           padding: const EdgeInsets.all(20),
                                           child: Center(
                                             child: AutoSizeText(
-                                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                                              widget.project.description,
                                               maxLines: 7,
                                               maxFontSize: 28,
                                               minFontSize: 12,
@@ -331,7 +334,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                 height: 20,
                               ),
                               Text(
-                                'Flutter (Dart) • Google Maps • Firebase',
+                                widget.project.skillsLearned.join(' • '),
                                 style: TextStyle(
                                   fontFamily: bodyFont,
                                   fontSize: 14,
@@ -347,7 +350,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
-                            'BISCUIT BEACON',
+                            widget.project.name.toUpperCase(),
                             style: TextStyle(
                               fontFamily: headingFont,
                               fontSize: 16,
@@ -402,7 +405,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                 )),
                             padding: const EdgeInsets.all(20),
                             child: AutoSizeText(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                              widget.project.description,
                               maxLines: 7,
                               maxFontSize: 24,
                               minFontSize: 12,
@@ -423,7 +426,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                             height: 20,
                           ),
                           Text(
-                            'Flutter (Dart) • Google Maps • Firebase',
+                            widget.project.skillsLearned.join(' • '),
                             style: TextStyle(
                               fontFamily: bodyFont,
                               fontSize: 14,
