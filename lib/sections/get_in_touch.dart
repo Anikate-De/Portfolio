@@ -21,6 +21,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double fontSize = width > 500 ? 22 : 18;
+    log(width.toString());
     return VisibilityDetector(
       key: const Key('getInTouchSection'),
       onVisibilityChanged: (visibilityInfo) {
@@ -119,7 +120,13 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                                     speed: kThemeChangeDuration * 0.85,
                                     textStyle: TextStyle(
                                       fontFamily: headingFont,
-                                      fontSize: width > 500 ? 24 : 14,
+                                      fontSize: width > 500
+                                          ? width >= 900
+                                              ? 24
+                                              : width >= 666
+                                                  ? 18
+                                                  : 16
+                                          : 14,
                                       letterSpacing: -0.6,
                                       wordSpacing: -2,
                                       color: AppColors.shadowGrey.shade50,

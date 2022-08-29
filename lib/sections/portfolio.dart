@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/portfolio_block.dart';
@@ -8,7 +10,7 @@ class PortfolioSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double fontSize = width > 500 ? 20 : 18;
+    log(width.toString());
     return Container(
       padding: EdgeInsets.symmetric(
           horizontal: width > 500 ? width / 5.33 : 60,
@@ -49,11 +51,19 @@ class PortfolioSection extends StatelessWidget {
             children: [
               PortfolioBlock(isMobileLayout: width <= 500),
               SizedBox(
-                height: width > 500 ? 180 : 80,
+                height: width > 500
+                    ? width >= 1200
+                        ? 180
+                        : 120
+                    : 80,
               ),
               PortfolioBlock(isAltLayout: true, isMobileLayout: width <= 500),
               SizedBox(
-                height: width > 500 ? 180 : 80,
+                height: width > 500
+                    ? width >= 1200
+                        ? 180
+                        : 120
+                    : 80,
               ),
               PortfolioBlock(isMobileLayout: width <= 500),
             ],

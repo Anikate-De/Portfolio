@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/resources/resources.dart';
@@ -31,7 +33,8 @@ class _AboutMeSectionState extends State<AboutMeSection>
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double fontSize = width > 500 ? 20 : 18;
+    log('${width}x${MediaQuery.of(context).size.height}');
+    double fontSize = 18;
     return VisibilityDetector(
       key: const Key('about-me-section'),
       onVisibilityChanged: (visibilityInfo) {
@@ -64,7 +67,10 @@ class _AboutMeSectionState extends State<AboutMeSection>
                         animate: false,
                         controller: animationController,
                         repeat: false,
-                        width: 100,
+                        width: width > 800
+                            ? 100
+                            : width /
+                                8, //? reduce size based on width for tablet size
                         fit: BoxFit.fitWidth,
                       ),
                     )
@@ -79,7 +85,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      flex: 5,
+                      flex: 2,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +152,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                             ),
                           ),
                           const SizedBox(
-                            height: 44,
+                            height: 36,
                           ),
                           RichText(
                             text: TextSpan(
@@ -184,7 +190,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                             ),
                           ),
                           const SizedBox(
-                            height: 44,
+                            height: 36,
                           ),
                           RichText(
                             text: TextSpan(
@@ -209,7 +215,7 @@ class _AboutMeSectionState extends State<AboutMeSection>
                             ),
                           ),
                           const SizedBox(
-                            height: 44,
+                            height: 36,
                           ),
                           RichText(
                             text: TextSpan(
@@ -239,28 +245,34 @@ class _AboutMeSectionState extends State<AboutMeSection>
                         ],
                       ),
                     ),
-                    width > 500
-                        ? const SizedBox(
-                            width: 200,
+                    width >= 768
+                        ? SizedBox(
+                            width: width >= 1200
+                                ? width / 16
+                                : 50, //? at 1200, reduce the width of the SB
                           )
                         : const SizedBox.shrink(),
-                    width > 500
+                    width >= 768
                         ? Expanded(
                             flex: 1,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                Hoverable(
-                                  yOffset: -10,
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    child: LayoutBuilder(
-                                      builder: (context, constraints) =>
-                                          Image.asset(
-                                        meIMG,
-                                        fit: BoxFit.scaleDown,
-                                        width: constraints.maxWidth,
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: Center(
+                                    child: Hoverable(
+                                      yOffset: -10,
+                                      child: SizedBox(
+                                        child: LayoutBuilder(
+                                          builder: (context, constraints) =>
+                                              Image.asset(
+                                            meIMG,
+                                            fit: BoxFit.fitHeight,
+                                            // fit: BoxFit.fitHeight,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 
@@ -43,13 +44,14 @@ class MoreSection extends StatelessWidget {
             SizedBox(
               height: width > 500 ? 36 : 70,
             ),
-            Text(
+            AutoSizeText(
               moreTexts[2],
+              maxLines: 1,
               style: TextStyle(
                 fontFamily: headingFont,
                 color: AppColors.shadowGrey.shade50,
                 wordSpacing: -1,
-                fontSize: width > 500 ? 42 : 38,
+                fontSize: width > 500 ? 42 : 36,
               ),
             ),
             const SizedBox(
