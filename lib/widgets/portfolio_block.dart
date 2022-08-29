@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/widgets.dart';
@@ -21,6 +22,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return widget.isMobileLayout
         ? Column(
             children: [
@@ -106,46 +108,243 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
             yOffset: -10,
             child: SizedBox(
               width: double.infinity,
-              height: 300,
               child: MouseRegion(
                 onEnter: (event) => setState(() => isHovering = true),
                 onExit: (event) => setState(() => isHovering = false),
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: widget.isAltLayout
-                          ? Alignment.centerRight
-                          : Alignment.centerLeft,
-                      child: AspectRatio(
-                        aspectRatio: 16 / 9,
-                        child: Stack(
-                          children: [
-                            Positioned.fill(
-                              child: Image.asset(
-                                meIMG,
-                                fit: BoxFit.fitWidth,
-                                filterQuality: FilterQuality.none,
+                child: width >= 768
+                    ? width >= 1100
+                        ? Stack(
+                            children: [
+                              Align(
+                                alignment: widget.isAltLayout
+                                    ? Alignment.centerRight
+                                    : Alignment.centerLeft,
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) => SizedBox(
+                                    width: constraints.maxWidth * 0.5,
+                                    child: AspectRatio(
+                                      aspectRatio: 16 / 9,
+                                      child: Stack(
+                                        children: [
+                                          Positioned.fill(
+                                            child: Image.asset(
+                                              meIMG,
+                                              fit: BoxFit.fitWidth,
+                                              filterQuality: FilterQuality.none,
+                                            ),
+                                          ),
+                                          Positioned.fill(
+                                            child: AnimatedContainer(
+                                              duration: const Duration(
+                                                  milliseconds: 150),
+                                              color: AppColors
+                                                  .shadowGrey.shade500
+                                                  .withOpacity(
+                                                      isHovering ? 0 : .5),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                            Positioned.fill(
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 150),
-                                color: AppColors.shadowGrey.shade500
-                                    .withOpacity(isHovering ? 0 : .5),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: widget.isAltLayout ? 0 : width / 4,
+                                    right: widget.isAltLayout ? width / 4 : 0),
+                                child: Column(
+                                  crossAxisAlignment: widget.isAltLayout
+                                      ? CrossAxisAlignment.start
+                                      : CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'BISCUIT BEACON',
+                                      style: TextStyle(
+                                        fontFamily: headingFont,
+                                        fontSize: 16,
+                                        color: AppColors.shadowGrey.shade700,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: AppColors.shadowGrey.shade100,
+                                        border: Border.fromBorderSide(
+                                            BorderSide(
+                                                color: AppColors
+                                                    .shadowGrey.shade500,
+                                                width: 5)),
+                                      ),
+                                      padding: const EdgeInsets.all(20),
+                                      child: AutoSizeText(
+                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                                        maxLines: 7,
+                                        maxFontSize: 24,
+                                        minFontSize: 12,
+                                        textAlign: widget.isAltLayout
+                                            ? TextAlign.start
+                                            : TextAlign.end,
+                                        style: TextStyle(
+                                          color: AppColors.shadowGrey.shade600,
+                                          fontFamily: bodyFont,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                          letterSpacing: -0.2,
+                                          wordSpacing: -1,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text(
+                                      'Flutter (Dart) • Google Maps • Firebase',
+                                      style: TextStyle(
+                                        fontFamily: bodyFont,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: -0.6,
+                                        wordSpacing: -2,
+                                        color: AppColors.shadowGrey.shade700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Positioned.fill(
-                      left: widget.isAltLayout ? 0 : 400,
-                      right: widget.isAltLayout ? 400 : 0,
-                      child: Column(
-                        crossAxisAlignment: widget.isAltLayout
-                            ? CrossAxisAlignment.start
-                            : CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                            ],
+                          )
+                        : Column(
+                            crossAxisAlignment: widget.isAltLayout
+                                ? CrossAxisAlignment.start
+                                : CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                'BISCUIT BEACON',
+                                style: TextStyle(
+                                  fontFamily: headingFont,
+                                  fontSize: 16,
+                                  color: AppColors.shadowGrey.shade700,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              LayoutBuilder(builder: (context, constraints) {
+                                double height =
+                                    (constraints.maxWidth / 2) * 9 / 16;
+                                return SizedBox(
+                                  height: height,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    textDirection: widget.isAltLayout
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
+                                    children: [
+                                      Expanded(
+                                        child: AspectRatio(
+                                          aspectRatio: 16 / 9,
+                                          child: Stack(
+                                            children: [
+                                              Positioned.fill(
+                                                child: Image.asset(
+                                                  meIMG,
+                                                  fit: BoxFit.fitWidth,
+                                                  filterQuality:
+                                                      FilterQuality.none,
+                                                ),
+                                              ),
+                                              Positioned.fill(
+                                                child: AnimatedContainer(
+                                                  duration: const Duration(
+                                                      milliseconds: 150),
+                                                  color: AppColors
+                                                      .shadowGrey.shade500
+                                                      .withOpacity(
+                                                          isHovering ? 0 : .5),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  AppColors.shadowGrey.shade100,
+                                              border: Border(
+                                                bottom: BorderSide(
+                                                    color: AppColors
+                                                        .shadowGrey.shade500,
+                                                    width: 5),
+                                                top: BorderSide(
+                                                    color: AppColors
+                                                        .shadowGrey.shade500,
+                                                    width: 5),
+                                                left: widget.isAltLayout
+                                                    ? BorderSide(
+                                                        color: AppColors
+                                                            .shadowGrey
+                                                            .shade500,
+                                                        width: 5)
+                                                    : BorderSide.none,
+                                                right: widget.isAltLayout
+                                                    ? BorderSide.none
+                                                    : BorderSide(
+                                                        color: AppColors
+                                                            .shadowGrey
+                                                            .shade500,
+                                                        width: 5),
+                                              )),
+                                          padding: const EdgeInsets.all(20),
+                                          child: Center(
+                                            child: AutoSizeText(
+                                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                                              maxLines: 7,
+                                              maxFontSize: 28,
+                                              minFontSize: 12,
+                                              textAlign: widget.isAltLayout
+                                                  ? TextAlign.start
+                                                  : TextAlign.end,
+                                              style: TextStyle(
+                                                color: AppColors
+                                                    .shadowGrey.shade600,
+                                                fontFamily: bodyFont,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w500,
+                                                letterSpacing: -0.2,
+                                                wordSpacing: -1,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                'Flutter (Dart) • Google Maps • Firebase',
+                                style: TextStyle(
+                                  fontFamily: bodyFont,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: -0.6,
+                                  wordSpacing: -2,
+                                  color: AppColors.shadowGrey.shade700,
+                                ),
+                              ),
+                            ],
+                          )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
                             'BISCUIT BEACON',
@@ -158,16 +357,55 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                           const SizedBox(
                             height: 20,
                           ),
+                          AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: Stack(
+                              children: [
+                                Positioned.fill(
+                                  child: Image.asset(
+                                    meIMG,
+                                    fit: BoxFit.fitWidth,
+                                    filterQuality: FilterQuality.none,
+                                  ),
+                                ),
+                                Positioned.fill(
+                                  child: AnimatedContainer(
+                                    duration: const Duration(milliseconds: 150),
+                                    color: AppColors.shadowGrey.shade500
+                                        .withOpacity(isHovering ? 0 : .5),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                           Container(
                             decoration: BoxDecoration(
-                              color: AppColors.shadowGrey.shade100,
-                              border: Border.fromBorderSide(BorderSide(
-                                  color: AppColors.shadowGrey.shade500,
-                                  width: 5)),
-                            ),
+                                color: AppColors.shadowGrey.shade100,
+                                // border: Border.fromBorderSide(
+                                //   BorderSide(
+                                //       color: AppColors.shadowGrey.shade500,
+                                //       width: 5),
+                                // ),
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColors.shadowGrey.shade500,
+                                    width: 5,
+                                  ),
+                                  left: BorderSide(
+                                    color: AppColors.shadowGrey.shade500,
+                                    width: 5,
+                                  ),
+                                  right: BorderSide(
+                                    color: AppColors.shadowGrey.shade500,
+                                    width: 5,
+                                  ),
+                                )),
                             padding: const EdgeInsets.all(20),
-                            child: Text(
+                            child: AutoSizeText(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                              maxLines: 7,
+                              maxFontSize: 24,
+                              minFontSize: 12,
                               textAlign: widget.isAltLayout
                                   ? TextAlign.start
                                   : TextAlign.end,
@@ -197,9 +435,6 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                           ),
                         ],
                       ),
-                    ),
-                  ],
-                ),
               ),
             ),
           );
