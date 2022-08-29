@@ -1,6 +1,8 @@
 // * Intro Page
 import 'package:portfolio/models/models.dart';
 
+const String appName = 'Anikate De • Portfolio';
+
 const List<String> introPageTexts = [
   'Hey visitor! I am...',
   'ANIKATE DE.',

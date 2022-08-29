@@ -66,25 +66,6 @@ class PortfolioSection extends StatelessWidget {
                         ),
                       ],
                     )),
-            // children: [
-            //   PortfolioBlock(isMobileLayout: width <= 500),
-            //   SizedBox(
-            //     height: width > 500
-            //         ? width >= 1200
-            //             ? 180
-            //             : 120
-            //         : 80,
-            //   ),
-            //   PortfolioBlock(isAltLayout: true, isMobileLayout: width <= 500),
-            //   SizedBox(
-            //     height: width > 500
-            //         ? width >= 1200
-            //             ? 180
-            //             : 120
-            //         : 80,
-            //   ),
-            //   PortfolioBlock(isMobileLayout: width <= 500),
-            // ],
           )
         ],
       ),
