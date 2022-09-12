@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
@@ -46,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPointerSignal: (pointerSignal) {
                 if (pointerSignal is PointerScrollEvent) {
                   double scroll = pointerSignal.scrollDelta.dy;
+                  log(scroll.toString());
                   if (pointerSignal.scrollDelta.dy.abs() >= 100) {
                     if (scroll > 0) {
                       // Adding the extra offset to over scroll done by user
@@ -64,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                   if (pointerSignal.scrollDelta.dy.abs() >= 100) {
                     scrollController.animateTo(scroll,
-                        duration: const Duration(milliseconds: 75),
+                        duration: const Duration(milliseconds: 150),
                         curve: Curves.linear);
                   } else {
                     scrollController.jumpTo(scroll);
