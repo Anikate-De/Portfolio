@@ -48,25 +48,24 @@ class PortfolioSection extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              PortfolioBlock(isMobileLayout: width <= 500),
-              SizedBox(
-                height: width > 500
-                    ? width >= 1200
-                        ? 180
-                        : 120
-                    : 80,
-              ),
-              PortfolioBlock(isAltLayout: true, isMobileLayout: width <= 500),
-              SizedBox(
-                height: width > 500
-                    ? width >= 1200
-                        ? 180
-                        : 120
-                    : 80,
-              ),
-              PortfolioBlock(isMobileLayout: width <= 500),
-            ],
+            children: List.generate(
+                portfolioProjects.length,
+                (index) => Column(
+                      children: [
+                        PortfolioBlock(
+                          isMobileLayout: width <= 500,
+                          project: portfolioProjects.elementAt(index),
+                          isAltLayout: index % 2 == 1,
+                        ),
+                        SizedBox(
+                          height: width > 500
+                              ? width >= 1200
+                                  ? 180
+                                  : 120
+                              : 80,
+                        ),
+                      ],
+                    )),
           )
         ],
       ),
