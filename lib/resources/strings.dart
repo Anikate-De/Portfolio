@@ -143,7 +143,7 @@ List<Project> portfolioProjects = [
       'Heroku WebHosting',
     ],
     url: 'https://github.com/Anikate-De/joke-api',
-    asset: 'assets/images/me.png',
+    asset: 'assets/images/worlds-best-dad.png',
   ),
   Project(
     name: 'Micro-AI',
