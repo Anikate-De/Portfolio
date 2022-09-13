@@ -151,9 +151,8 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                         children: [
                                           Positioned.fill(
                                             child: Image.asset(
-                                              meIMG,
+                                              widget.project.asset,
                                               fit: BoxFit.fitWidth,
-                                              filterQuality: FilterQuality.none,
                                             ),
                                           ),
                                           Positioned.fill(
@@ -298,7 +297,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                             children: [
                                               Positioned.fill(
                                                 child: Image.asset(
-                                                  meIMG,
+                                                  widget.project.asset,
                                                   fit: BoxFit.fitWidth,
                                                   filterQuality:
                                                       FilterQuality.none,
@@ -437,9 +436,8 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                               children: [
                                 Positioned.fill(
                                   child: Image.asset(
-                                    meIMG,
+                                    widget.project.asset,
                                     fit: BoxFit.fitWidth,
-                                    filterQuality: FilterQuality.none,
                                   ),
                                 ),
                                 Positioned.fill(

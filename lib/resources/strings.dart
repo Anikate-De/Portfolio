@@ -71,9 +71,6 @@ const List<String> setBSkillsList = ['JavaScript', 'Dart', 'SQL'];
 
 // * Portfolio Section
 const String portfolioMainText = 'PORTFOLIO';
-/*
-  OTHER PORTFOLIO RELATED TEXT WILL GO HERE...
-*/
 
 // * Get In Touch Section
 const String getInTouchMainText = 'GET IN TOUCH';
@@ -98,6 +95,7 @@ List<Project> portfolioProjects = [
       'Cloud Functions'
     ],
     url: 'https://www.biscuitbeacon.com',
+    asset: 'assets/images/me.png',
   ),
   Project(
     name: 'DART RUNNER BOT',
@@ -113,6 +111,7 @@ List<Project> portfolioProjects = [
       'Isolates & Processes',
       'Nyxx Library'
     ],
+    asset: 'assets/images/me.png',
   ),
   Project(
     name: 'PHI CHAT',
@@ -127,6 +126,7 @@ List<Project> portfolioProjects = [
       'OAuth 2.0',
       'Gestures',
     ],
+    asset: 'assets/images/phi-chat.png',
   ),
   Project(
     name: 'World\'s Best Dad',
@@ -143,6 +143,7 @@ List<Project> portfolioProjects = [
       'Heroku WebHosting',
     ],
     url: 'https://github.com/Anikate-De/joke-api',
+    asset: 'assets/images/me.png',
   ),
   Project(
     name: 'Micro-AI',
@@ -158,5 +159,6 @@ List<Project> portfolioProjects = [
       'TTS',
       'WolframAlpha',
     ],
+    asset: 'assets/images/me.png',
   ),
 ];
