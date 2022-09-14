@@ -159,6 +159,6 @@ List<Project> portfolioProjects = [
       'TTS',
       'WolframAlpha',
     ],
-    asset: 'assets/images/me.png',
+    asset: 'assets/images/micro-ai.png',
   ),
 ];
