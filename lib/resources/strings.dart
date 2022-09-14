@@ -1,6 +1,8 @@
 // * Intro Page
 import 'package:portfolio/models/models.dart';
 
+const String githubLink = 'https://github.com/Anikate-De';
+
 const String appName = 'Anikate De • Portfolio';
 
 const List<String> introPageTexts = [
@@ -69,9 +71,6 @@ const List<String> setBSkillsList = ['JavaScript', 'Dart', 'SQL'];
 
 // * Portfolio Section
 const String portfolioMainText = 'PORTFOLIO';
-/*
-  OTHER PORTFOLIO RELATED TEXT WILL GO HERE...
-*/
 
 // * Get In Touch Section
 const String getInTouchMainText = 'GET IN TOUCH';
@@ -83,32 +82,83 @@ const String getInTouchBuiltWithText = 'Built with Flutter 3\nby Anikate De';
 List<Project> portfolioProjects = [
   Project(
     name: 'Biscuit Beacon',
-    description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    description: [
+      'I am the Co-founder and App Developer at Biscuit Beacon, the one-and-only digital platform for dog owners that lets you make your walking sessions more enjoyable by notifying you about nearby community treat jars, water bowls, bag dispensers and more! Check out the app in the stores (in review, coming soon!) and ',
+      'biscuitbeacon.com',
+      '',
+    ],
     skillsLearned: [
       'Flutter',
       'Google Maps',
       'Firebase',
+      'JavaScript',
+      'Cloud Functions'
     ],
+    url: 'https://www.biscuitbeacon.com',
+    asset: 'assets/images/biscuit-beacon.png',
   ),
   Project(
-    name: 'World\'s Best Dad',
-    description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    name: 'DART RUNNER BOT',
+    description: [
+      'The FIRST EVER Discord bot which lets you run Dart code snippets directly via a message and get the output in an instant.\nWant to share the output of your Dart code, explain a snippet of code to someone with real-time execution, or just have fun with print statements? The Dart Runner Bot is here to the rescue.',
+      '',
+      '',
+    ],
     skillsLearned: [
-      'Flutter',
-      'Node.js REST API',
-      'Heroku WebHosting',
+      'Dart',
+      'Server-Side',
+      'Docker',
+      'Isolates & Processes',
+      'Nyxx Library'
     ],
+    asset: 'assets/images/dart-runner-bot.png',
   ),
   Project(
-    name: 'Chatty',
-    description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    name: 'PHI CHAT',
+    description: [
+      'Talk to your friends and family just by using their email IDs. Communication happens via Conversations. Set a nice photo, and a catchy name and add as many people as you want. You can even have multiple conversations with the same person!\nInvite people to your conversation in a hassle-free way, with a QR or Text Code.',
+      '',
+      '',
+    ],
     skillsLearned: [
       'Flutter',
       'Firebase',
       'OAuth 2.0',
+      'Gestures',
     ],
+    asset: 'assets/images/phi-chat.png',
+  ),
+  Project(
+    name: 'World\'s Best Dad',
+    description: [
+      'A fun cross-platfrom app to browse through hundreds of \'Dad Jokes\' or puns. Made with Flutter, this app employs Provider State Management and perfectly coordinated use of SharedPreferences. It is powered by the ',
+      'Joke API',
+      ', also created by me.',
+    ],
+    skillsLearned: [
+      'Flutter',
+      'Provider',
+      'Responsive Design',
+      'Node.js REST API',
+      'Heroku WebHosting',
+    ],
+    url: 'https://github.com/Anikate-De/joke-api',
+    asset: 'assets/images/worlds-best-dad.png',
+  ),
+  Project(
+    name: 'Micro-AI',
+    description: [
+      'A voice recognition-based GUI personal assistant that can be used to execute simple tasks and reply to questions.\nGet the latest news report, and articles right from Wikipedia, manage a To-Do list, get questions answered, take screenshots, and so much more!',
+      '',
+      '',
+    ],
+    skillsLearned: [
+      'Python',
+      'MySQL',
+      'Tkinter',
+      'TTS',
+      'WolframAlpha',
+    ],
+    asset: 'assets/images/micro-ai.png',
   ),
 ];

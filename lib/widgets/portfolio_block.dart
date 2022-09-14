@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/models/models.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PortfolioBlock extends StatefulWidget {
   final bool isAltLayout;
@@ -74,19 +76,37 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                           color: AppColors.shadowGrey.shade500, width: 5)),
                     ),
                     padding: const EdgeInsets.all(24),
-                    child: Text(
-                      widget.project.description,
+                    child: RichText(
                       textAlign:
                           widget.isAltLayout ? TextAlign.start : TextAlign.end,
-                      style: TextStyle(
-                        color: AppColors.shadowGrey.shade600,
-                        fontFamily: bodyFont,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -0.2,
-                        height: 1.4,
-                        wordSpacing: -1,
-                      ),
+                      text: TextSpan(
+                          style: TextStyle(
+                            color: AppColors.shadowGrey.shade600,
+                            fontFamily: bodyFont,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: -0.2,
+                            height: 1.4,
+                            wordSpacing: -1,
+                          ),
+                          children: [
+                            TextSpan(text: widget.project.description[0]),
+                            TextSpan(
+                              text: widget.project.description[1],
+                              style: const TextStyle(
+                                color: Colors.blue,
+                                decoration: TextDecoration.underline,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  launchUrl(
+                                      Uri.parse(
+                                          widget.project.url ?? githubLink),
+                                      mode: LaunchMode.platformDefault);
+                                },
+                            ),
+                            TextSpan(text: widget.project.description[2]),
+                          ]),
                     ),
                   ),
                   const SizedBox(
@@ -131,9 +151,8 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                         children: [
                                           Positioned.fill(
                                             child: Image.asset(
-                                              meIMG,
+                                              widget.project.asset,
                                               fit: BoxFit.fitWidth,
-                                              filterQuality: FilterQuality.none,
                                             ),
                                           ),
                                           Positioned.fill(
@@ -182,8 +201,32 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                                 width: 5)),
                                       ),
                                       padding: const EdgeInsets.all(20),
-                                      child: AutoSizeText(
-                                        widget.project.description,
+                                      child: AutoSizeText.rich(
+                                        TextSpan(children: [
+                                          TextSpan(
+                                              text: widget
+                                                  .project.description[0]),
+                                          TextSpan(
+                                            text: widget.project.description[1],
+                                            style: const TextStyle(
+                                              color: Colors.blue,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () {
+                                                launchUrl(
+                                                    Uri.parse(
+                                                        widget.project.url ??
+                                                            githubLink),
+                                                    mode: LaunchMode
+                                                        .platformDefault);
+                                              },
+                                          ),
+                                          TextSpan(
+                                              text: widget
+                                                  .project.description[2]),
+                                        ]),
                                         maxLines: 7,
                                         maxFontSize: 24,
                                         minFontSize: 12,
@@ -254,7 +297,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                             children: [
                                               Positioned.fill(
                                                 child: Image.asset(
-                                                  meIMG,
+                                                  widget.project.asset,
                                                   fit: BoxFit.fitWidth,
                                                   filterQuality:
                                                       FilterQuality.none,
@@ -305,8 +348,35 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                               )),
                                           padding: const EdgeInsets.all(20),
                                           child: Center(
-                                            child: AutoSizeText(
-                                              widget.project.description,
+                                            child: AutoSizeText.rich(
+                                              TextSpan(children: [
+                                                TextSpan(
+                                                    text: widget.project
+                                                        .description[0]),
+                                                TextSpan(
+                                                  text: widget
+                                                      .project.description[1],
+                                                  style: const TextStyle(
+                                                    color: Colors.blue,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                  ),
+                                                  recognizer:
+                                                      TapGestureRecognizer()
+                                                        ..onTap = () {
+                                                          launchUrl(
+                                                              Uri.parse(widget
+                                                                      .project
+                                                                      .url ??
+                                                                  githubLink),
+                                                              mode: LaunchMode
+                                                                  .platformDefault);
+                                                        },
+                                                ),
+                                                TextSpan(
+                                                    text: widget.project
+                                                        .description[2]),
+                                              ]),
                                               maxLines: 7,
                                               maxFontSize: 28,
                                               minFontSize: 12,
@@ -366,9 +436,8 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                               children: [
                                 Positioned.fill(
                                   child: Image.asset(
-                                    meIMG,
+                                    widget.project.asset,
                                     fit: BoxFit.fitWidth,
-                                    filterQuality: FilterQuality.none,
                                   ),
                                 ),
                                 Positioned.fill(
@@ -404,8 +473,25 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                   ),
                                 )),
                             padding: const EdgeInsets.all(20),
-                            child: AutoSizeText(
-                              widget.project.description,
+                            child: AutoSizeText.rich(
+                              TextSpan(children: [
+                                TextSpan(text: widget.project.description[0]),
+                                TextSpan(
+                                  text: widget.project.description[1],
+                                  style: const TextStyle(
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      launchUrl(
+                                          Uri.parse(
+                                              widget.project.url ?? githubLink),
+                                          mode: LaunchMode.platformDefault);
+                                    },
+                                ),
+                                TextSpan(text: widget.project.description[2]),
+                              ]),
                               maxLines: 7,
                               maxFontSize: 24,
                               minFontSize: 12,
