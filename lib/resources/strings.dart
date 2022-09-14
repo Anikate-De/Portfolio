@@ -95,7 +95,7 @@ List<Project> portfolioProjects = [
       'Cloud Functions'
     ],
     url: 'https://www.biscuitbeacon.com',
-    asset: 'assets/images/me.png',
+    asset: 'assets/images/biscuit-beacon.png',
   ),
   Project(
     name: 'DART RUNNER BOT',
