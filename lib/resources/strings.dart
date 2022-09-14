@@ -111,7 +111,7 @@ List<Project> portfolioProjects = [
       'Isolates & Processes',
       'Nyxx Library'
     ],
-    asset: 'assets/images/me.png',
+    asset: 'assets/images/dart-runner-bot.png',
   ),
   Project(
     name: 'PHI CHAT',
