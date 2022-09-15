@@ -21,9 +21,8 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (routeSettings) {
         switch (routeSettings.name) {
           case HomeScreen.routeId:
-            return MaterialPageRoute(
-                builder: (context) =>
-                    HomeScreen(bgImg: routeSettings.arguments as Image?),
+            return CustomPageRoute(
+                child: HomeScreen(bgImg: routeSettings.arguments as Image?),
                 settings: routeSettings);
           default:
             return MaterialPageRoute(
@@ -31,6 +30,31 @@ class MyApp extends StatelessWidget {
                 settings: routeSettings);
         }
       },
+    );
+  }
+}
+
+class CustomPageRoute extends PageRouteBuilder {
+  final Widget child;
+  CustomPageRoute({required this.child, RouteSettings? settings})
+      : super(
+          transitionDuration: const Duration(milliseconds: 500),
+          pageBuilder: (context, animation, secondaryAnimation) => child,
+          settings: settings,
+        );
+
+  @override
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
+    return FadeTransition(
+      opacity: animation,
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0, 1),
+          end: const Offset(0, 0),
+        ).chain(CurveTween(curve: Curves.easeInOutQuart)).animate(animation),
+        child: child,
+      ),
     );
   }
 }

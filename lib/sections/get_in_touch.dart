@@ -117,7 +117,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                                 animatedTexts: [
                                   TyperAnimatedText(
                                     getInTouchEmail,
-                                    speed: kThemeChangeDuration * 0.85,
+                                    speed: kThemeChangeDuration * 0.5,
                                     textStyle: TextStyle(
                                       fontFamily: headingFont,
                                       fontSize: width > 500
