@@ -100,8 +100,8 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   launchUrl(
-                                      Uri.parse(
-                                          widget.project.url ?? githubLink),
+                                      Uri.parse(widget.project.url ??
+                                          socialLinks['github']),
                                       mode: LaunchMode.platformDefault);
                                 },
                             ),
@@ -216,9 +216,9 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () {
                                                 launchUrl(
-                                                    Uri.parse(
-                                                        widget.project.url ??
-                                                            githubLink),
+                                                    Uri.parse(widget
+                                                            .project.url ??
+                                                        socialLinks['github']),
                                                     mode: LaunchMode
                                                         .platformDefault);
                                               },
@@ -378,7 +378,8 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                                               Uri.parse(widget
                                                                       .project
                                                                       .url ??
-                                                                  githubLink),
+                                                                  socialLinks[
+                                                                      'github']),
                                                               mode: LaunchMode
                                                                   .platformDefault);
                                                         },
@@ -495,8 +496,8 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       launchUrl(
-                                          Uri.parse(
-                                              widget.project.url ?? githubLink),
+                                          Uri.parse(widget.project.url ??
+                                              socialLinks['github']),
                                           mode: LaunchMode.platformDefault);
                                     },
                                 ),

@@ -1,8 +1,6 @@
 // * Intro Page
 import 'package:portfolio/models/models.dart';
 
-const String githubLink = 'https://github.com/Anikate-De';
-
 const String appName = 'Anikate De • Portfolio';
 
 const List<String> introPageTexts = [
@@ -72,7 +70,7 @@ const String portfolioMainText = 'PORTFOLIO';
 const String getInTouchMainText = 'GET IN TOUCH';
 const String getInTouchText1 =
     'Feel free to drop me an email or contact me via any of my social media handles below.';
-const String getInTouchEmail = 'de.anikate@gmail.com';
+const String email = 'de.anikate@gmail.com';
 const String getInTouchBuiltWithText = 'Built with Flutter 3\nby Anikate De';
 
 List<Project> portfolioProjects = [
@@ -158,3 +156,8 @@ List<Project> portfolioProjects = [
     asset: 'assets/images/micro-ai.png',
   ),
 ];
+
+Map socialLinks = {
+  'email': 'mailto:$email',
+  'github': 'https://github.com/Anikate-De',
+};
