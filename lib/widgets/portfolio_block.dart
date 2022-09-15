@@ -246,15 +246,25 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                     const SizedBox(
                                       height: 20,
                                     ),
-                                    Text(
-                                      widget.project.skillsLearned.join(' • '),
-                                      style: TextStyle(
-                                        fontFamily: bodyFont,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: -0.6,
-                                        wordSpacing: -2,
-                                        color: AppColors.shadowGrey.shade700,
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        left: widget.isAltLayout ? 0 : 120,
+                                        right: widget.isAltLayout ? 120 : 0,
+                                      ),
+                                      child: Text(
+                                        widget.project.skillsLearned
+                                            .join(' • '),
+                                        textAlign: widget.isAltLayout
+                                            ? TextAlign.left
+                                            : TextAlign.right,
+                                        style: TextStyle(
+                                          fontFamily: bodyFont,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: -0.6,
+                                          wordSpacing: -2,
+                                          color: AppColors.shadowGrey.shade700,
+                                        ),
                                       ),
                                     ),
                                   ],
