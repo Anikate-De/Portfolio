@@ -68,24 +68,6 @@ class _SkillListBoxState extends State<SkillListBox> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // AutoSizeText(
-                        //   widget.title,
-                        //   maxLines: 1,
-                        //   minFontSize: 8,
-                        //   maxFontSize: 22,
-                        //   style: TextStyle(
-                        //     fontFamily: headingFont,
-                        //     fontSize: 14,
-                        //     letterSpacing: -0.6,
-                        //     wordSpacing: -2,
-                        //     color: AppColors.shadowGrey.shade50,
-                        //   ),
-                        // ),
-                        // Divider(
-                        //   thickness: 5,
-                        //   height: 50,
-                        //   color: AppColors.shadowGrey.shade50.withOpacity(0.4),
-                        // ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: widget.list
