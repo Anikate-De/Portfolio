@@ -160,4 +160,5 @@ List<Project> portfolioProjects = [
 Map socialLinks = {
   'email': 'mailto:$email',
   'github': 'https://github.com/Anikate-De',
+  'instagram': 'https://www.instagram.com/anikate.de/',
 };

@@ -214,7 +214,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                 Hoverable(
                   child: TextButton(
                       onPressed: () {
-                        log('Instagram was clicked');
+                        launchUrlString(socialLinks['instagram']);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
