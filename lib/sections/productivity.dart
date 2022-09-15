@@ -159,8 +159,7 @@ class _ProductivitySectionState extends State<ProductivitySection>
                                       BulletPointText(
                                           text: whatIOfferPointsList[2]),
                                       const SizedBox(width: 30),
-                                      BulletPointText(
-                                          text: whatIOfferPointsList[3]),
+                                      const SizedBox.shrink()
                                     ],
                                   ),
                                 ],
@@ -335,7 +334,6 @@ class _ProductivitySectionState extends State<ProductivitySection>
                                                 child: SkillListBox(
                                                   color:
                                                       AppColors.greenAccentDark,
-                                                  title: skillSetBText,
                                                   list: setBSkillsList,
                                                 ),
                                               ),

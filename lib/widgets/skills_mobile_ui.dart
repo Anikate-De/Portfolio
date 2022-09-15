@@ -105,7 +105,6 @@ class SkillsMobileUI extends StatelessWidget {
             padding: EdgeInsets.only(left: 100.0),
             child: SkillListBox(
               color: AppColors.greenAccentDark,
-              title: skillSetBText,
               list: setBSkillsList,
             ),
           ),
