@@ -197,7 +197,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                 Hoverable(
                   child: TextButton(
                       onPressed: () {
-                        log('Github was clicked');
+                        launchUrlString(socialLinks['github']);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
