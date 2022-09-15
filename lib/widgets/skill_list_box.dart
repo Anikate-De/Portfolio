@@ -6,12 +6,10 @@ import '../resources/resources.dart';
 
 class SkillListBox extends StatefulWidget {
   final Color color;
-  final String title;
   final List<String> list;
 
   const SkillListBox({
     this.color = AppColors.greenAccentLight,
-    this.title = skillSetAText,
     this.list = setASkillsList,
     Key? key,
   }) : super(key: key);
@@ -49,7 +47,7 @@ class _SkillListBoxState extends State<SkillListBox> {
                   left: isHovering ? hoverBorderGap : defaultBorderGap,
                   bottom: isHovering ? hoverBorderGap / 2 : 0,
                   right: isHovering ? hoverBorderGap / 2 : 0),
-              height: 220,
+              height: 160,
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.fromBorderSide(
@@ -57,64 +55,66 @@ class _SkillListBoxState extends State<SkillListBox> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  right: defaultBorderGap, bottom: defaultBorderGap),
-              child: Container(
-                height: 220,
-                color: widget.color,
-                child: Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      AutoSizeText(
-                        widget.title,
-                        maxLines: 1,
-                        minFontSize: 8,
-                        maxFontSize: 22,
-                        style: TextStyle(
-                          fontFamily: headingFont,
-                          fontSize: 14,
-                          letterSpacing: -0.6,
-                          wordSpacing: -2,
-                          color: AppColors.shadowGrey.shade50,
-                        ),
-                      ),
-                      Divider(
-                        thickness: 5,
-                        height: 50,
-                        color: AppColors.shadowGrey.shade50.withOpacity(0.4),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: widget.list
-                            .map(
-                              (text) => Column(
-                                children: [
-                                  AutoSizeText(
-                                    text,
-                                    maxLines: 1,
-                                    minFontSize: 10,
-                                    maxFontSize: 24,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: bodyFont,
-                                      color: AppColors.shadowGrey.shade50,
-                                      wordSpacing: -1,
-                                      fontSize: 16,
+            Positioned.fill(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    right: defaultBorderGap, bottom: defaultBorderGap),
+                child: Container(
+                  height: 160,
+                  color: widget.color,
+                  child: Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // AutoSizeText(
+                        //   widget.title,
+                        //   maxLines: 1,
+                        //   minFontSize: 8,
+                        //   maxFontSize: 22,
+                        //   style: TextStyle(
+                        //     fontFamily: headingFont,
+                        //     fontSize: 14,
+                        //     letterSpacing: -0.6,
+                        //     wordSpacing: -2,
+                        //     color: AppColors.shadowGrey.shade50,
+                        //   ),
+                        // ),
+                        // Divider(
+                        //   thickness: 5,
+                        //   height: 50,
+                        //   color: AppColors.shadowGrey.shade50.withOpacity(0.4),
+                        // ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: widget.list
+                              .map(
+                                (text) => Column(
+                                  children: [
+                                    AutoSizeText(
+                                      text,
+                                      maxLines: 1,
+                                      minFontSize: 10,
+                                      maxFontSize: 24,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: bodyFont,
+                                        color: AppColors.shadowGrey.shade50,
+                                        wordSpacing: -1,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    height: 16,
-                                  )
-                                ],
-                              ),
-                            )
-                            .toList(),
-                      )
-                    ],
+                                    const SizedBox(
+                                      height: 16,
+                                    )
+                                  ],
+                                ),
+                              )
+                              .toList(),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
