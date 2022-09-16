@@ -332,12 +332,32 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                             aspectRatio: 16 / 9,
                                             child: Stack(
                                               children: [
-                                                Positioned.fill(
-                                                  child: Image.asset(
-                                                    widget.project.asset,
-                                                    fit: BoxFit.fitWidth,
-                                                    filterQuality:
-                                                        FilterQuality.none,
+                                                AnimatedContainer(
+                                                  duration: const Duration(
+                                                      milliseconds: 150),
+                                                  decoration: BoxDecoration(
+                                                    boxShadow: isHovering
+                                                        ? [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              spreadRadius: 5,
+                                                              blurRadius: 7,
+                                                              offset: const Offset(
+                                                                  0,
+                                                                  3), // changes position of shadow
+                                                            ),
+                                                          ]
+                                                        : [],
+                                                  ),
+                                                  child: Positioned.fill(
+                                                    child: Image.asset(
+                                                      widget.project.asset,
+                                                      fit: BoxFit.fitWidth,
+                                                      filterQuality:
+                                                          FilterQuality.none,
+                                                    ),
                                                   ),
                                                 ),
                                                 Positioned.fill(
@@ -474,9 +494,27 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                               child: Stack(
                                 children: [
                                   Positioned.fill(
-                                    child: Image.asset(
-                                      widget.project.asset,
-                                      fit: BoxFit.fitWidth,
+                                    child: AnimatedContainer(
+                                      duration:
+                                          const Duration(milliseconds: 150),
+                                      decoration: BoxDecoration(
+                                        boxShadow: isHovering
+                                            ? [
+                                                BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  spreadRadius: 5,
+                                                  blurRadius: 7,
+                                                  offset: const Offset(0,
+                                                      3), // changes position of shadow
+                                                ),
+                                              ]
+                                            : [],
+                                      ),
+                                      child: Image.asset(
+                                        widget.project.asset,
+                                        fit: BoxFit.fitWidth,
+                                      ),
                                     ),
                                   ),
                                   Positioned.fill(
