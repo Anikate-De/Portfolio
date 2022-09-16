@@ -90,6 +90,7 @@ List<Project> portfolioProjects = [
     ],
     url: 'https://www.biscuitbeacon.com',
     asset: 'assets/images/biscuit-beacon.png',
+    gitHubURL: 'https://www.biscuitbeacon.com',
   ),
   Project(
     name: 'DART RUNNER BOT',
@@ -106,6 +107,7 @@ List<Project> portfolioProjects = [
       'Nyxx Library'
     ],
     asset: 'assets/images/dart-runner-bot.png',
+    gitHubURL: 'https://github.com/Anikate-De/Dart-Runner-Bot',
   ),
   Project(
     name: 'PHI CHAT',
@@ -121,6 +123,7 @@ List<Project> portfolioProjects = [
       'Gestures',
     ],
     asset: 'assets/images/phi-chat.png',
+    gitHubURL: 'https://github.com/Anikate-De/phi_chat',
   ),
   Project(
     name: 'World\'s Best Dad',
@@ -138,6 +141,7 @@ List<Project> portfolioProjects = [
     ],
     url: 'https://github.com/Anikate-De/joke-api',
     asset: 'assets/images/worlds-best-dad.png',
+    gitHubURL: 'https://github.com/Anikate-De/worlds_best_dad',
   ),
   Project(
     name: 'Micro-AI',
@@ -154,6 +158,7 @@ List<Project> portfolioProjects = [
       'WolframAlpha',
     ],
     asset: 'assets/images/micro-ai.png',
+    gitHubURL: 'https://github.com/Anikate-De/Personal-Assistant',
   ),
 ];
 
