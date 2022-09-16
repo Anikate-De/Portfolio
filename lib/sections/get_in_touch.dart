@@ -2,8 +2,11 @@ import 'dart:developer';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/hoverable.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class GetInTouchSection extends StatefulWidget {
@@ -97,7 +100,39 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                           MaterialStateProperty.all(Colors.transparent),
                     ),
                     onPressed: () {
-                      log('Email was clicked');
+                      Clipboard.setData(const ClipboardData(text: email));
+                      showToastWidget(
+                        Container(
+                          padding: const EdgeInsets.all(24),
+                          decoration: ShapeDecoration(
+                            shape: Border.fromBorderSide(BorderSide(
+                              width: 4,
+                              color: AppColors.shadowGrey.shade400,
+                            )),
+                            color: AppColors.shadowGrey.shade600,
+                          ),
+                          child: Text(
+                            'Email copied to clipboard',
+                            style: TextStyle(
+                              color: AppColors.shadowGrey.shade100,
+                              fontFamily: bodyFont,
+                              fontSize: width > 500 ? 16 : 14,
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: -0.2,
+                              wordSpacing: -1,
+                            ),
+                          ),
+                        ),
+                        context: context,
+                        animation: StyledToastAnimation.slideFromTop,
+                        reverseAnimation: StyledToastAnimation.slideFromTop,
+                        position: StyledToastPosition.top,
+                        animDuration: const Duration(milliseconds: 400),
+                        duration: const Duration(seconds: 4),
+                        curve: Curves.easeInOut,
+                        reverseCurve: Curves.easeOutBack,
+                      );
+                      launchUrlString(socialLinks['email']);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
@@ -116,8 +151,8 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                                 isRepeatingAnimation: false,
                                 animatedTexts: [
                                   TyperAnimatedText(
-                                    getInTouchEmail,
-                                    speed: kThemeChangeDuration * 0.85,
+                                    email,
+                                    speed: kThemeChangeDuration * 0.5,
                                     textStyle: TextStyle(
                                       fontFamily: headingFont,
                                       fontSize: width > 500
@@ -162,7 +197,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                 Hoverable(
                   child: TextButton(
                       onPressed: () {
-                        log('Github was clicked');
+                        launchUrlString(socialLinks['github']);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -179,7 +214,7 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
                 Hoverable(
                   child: TextButton(
                       onPressed: () {
-                        log('Instagram was clicked');
+                        launchUrlString(socialLinks['instagram']);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),

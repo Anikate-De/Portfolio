@@ -1,8 +1,6 @@
 // * Intro Page
 import 'package:portfolio/models/models.dart';
 
-const String githubLink = 'https://github.com/Anikate-De';
-
 const String appName = 'Anikate De • Portfolio';
 
 const List<String> introPageTexts = [
@@ -72,7 +70,7 @@ const String portfolioMainText = 'PORTFOLIO';
 const String getInTouchMainText = 'GET IN TOUCH';
 const String getInTouchText1 =
     'Feel free to drop me an email or contact me via any of my social media handles below.';
-const String getInTouchEmail = 'de.anikate@gmail.com';
+const String email = 'de.anikate@gmail.com';
 const String getInTouchBuiltWithText = 'Built with Flutter 3\nby Anikate De';
 
 List<Project> portfolioProjects = [
@@ -92,6 +90,7 @@ List<Project> portfolioProjects = [
     ],
     url: 'https://www.biscuitbeacon.com',
     asset: 'assets/images/biscuit-beacon.png',
+    gitHubURL: 'https://www.biscuitbeacon.com',
   ),
   Project(
     name: 'DART RUNNER BOT',
@@ -108,6 +107,7 @@ List<Project> portfolioProjects = [
       'Nyxx Library'
     ],
     asset: 'assets/images/dart-runner-bot.png',
+    gitHubURL: 'https://github.com/Anikate-De/Dart-Runner-Bot',
   ),
   Project(
     name: 'PHI CHAT',
@@ -123,6 +123,7 @@ List<Project> portfolioProjects = [
       'Gestures',
     ],
     asset: 'assets/images/phi-chat.png',
+    gitHubURL: 'https://github.com/Anikate-De/phi_chat',
   ),
   Project(
     name: 'World\'s Best Dad',
@@ -140,6 +141,7 @@ List<Project> portfolioProjects = [
     ],
     url: 'https://github.com/Anikate-De/joke-api',
     asset: 'assets/images/worlds-best-dad.png',
+    gitHubURL: 'https://github.com/Anikate-De/worlds_best_dad',
   ),
   Project(
     name: 'Micro-AI',
@@ -156,5 +158,12 @@ List<Project> portfolioProjects = [
       'WolframAlpha',
     ],
     asset: 'assets/images/micro-ai.png',
+    gitHubURL: 'https://github.com/Anikate-De/Personal-Assistant',
   ),
 ];
+
+Map socialLinks = {
+  'email': 'mailto:$email',
+  'github': 'https://github.com/Anikate-De',
+  'instagram': 'https://www.instagram.com/anikate.de/',
+};
