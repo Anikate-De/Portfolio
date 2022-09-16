@@ -150,9 +150,28 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                       child: Stack(
                                         children: [
                                           Positioned.fill(
-                                            child: Image.asset(
-                                              widget.project.asset,
-                                              fit: BoxFit.fitWidth,
+                                            child: AnimatedContainer(
+                                              decoration: BoxDecoration(
+                                                boxShadow: isHovering
+                                                    ? [
+                                                        BoxShadow(
+                                                          color: Colors.grey
+                                                              .withOpacity(0.5),
+                                                          spreadRadius: 5,
+                                                          blurRadius: 7,
+                                                          offset: const Offset(
+                                                              0,
+                                                              3), // changes position of shadow
+                                                        ),
+                                                      ]
+                                                    : [],
+                                              ),
+                                              duration: const Duration(
+                                                  milliseconds: 150),
+                                              child: Image.asset(
+                                                widget.project.asset,
+                                                fit: BoxFit.fitWidth,
+                                              ),
                                             ),
                                           ),
                                           Positioned.fill(
@@ -464,11 +483,6 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                           Container(
                             decoration: BoxDecoration(
                                 color: AppColors.shadowGrey.shade100,
-                                // border: Border.fromBorderSide(
-                                //   BorderSide(
-                                //       color: AppColors.shadowGrey.shade500,
-                                //       width: 5),
-                                // ),
                                 border: Border(
                                   bottom: BorderSide(
                                     color: AppColors.shadowGrey.shade500,
