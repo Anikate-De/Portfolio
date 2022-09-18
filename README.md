@@ -2,5 +2,7 @@
 
 A static website, made with Flutter, to serve as a Portfolio website.
 
-Created by Anikate De
+## 💡 Authors
+
+- [@Anikate De](https://www.github.com/Anikate-De)
 
