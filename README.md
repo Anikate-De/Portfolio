@@ -2,6 +2,9 @@
 
 A static website, made with Flutter, to serve as a Portfolio website.
 
+Visit the website here - 
+https://anikate-de.github.io/
+
 ## ❓How to Use
 
 ### Pre-requisites
