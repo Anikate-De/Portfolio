@@ -167,7 +167,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                                                 3), // changes position of shadow
                                                           ),
                                                         ]
-                                                      : [],
+                                                      : null,
                                                 ),
                                                 duration: const Duration(
                                                     milliseconds: 150),
@@ -332,31 +332,30 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                             aspectRatio: 16 / 9,
                                             child: Stack(
                                               children: [
-                                                AnimatedContainer(
-                                                  duration: const Duration(
-                                                      milliseconds: 150),
-                                                  decoration: BoxDecoration(
-                                                    boxShadow: isHovering
-                                                        ? [
-                                                            BoxShadow(
-                                                              color: Colors.grey
-                                                                  .withOpacity(
-                                                                      0.5),
-                                                              spreadRadius: 5,
-                                                              blurRadius: 7,
-                                                              offset: const Offset(
-                                                                  0,
-                                                                  3), // changes position of shadow
-                                                            ),
-                                                          ]
-                                                        : [],
-                                                  ),
-                                                  child: Positioned.fill(
+                                                Positioned.fill(
+                                                  child: AnimatedContainer(
+                                                    decoration: BoxDecoration(
+                                                      boxShadow: isHovering
+                                                          ? [
+                                                              BoxShadow(
+                                                                color: Colors
+                                                                    .grey
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                spreadRadius: 5,
+                                                                blurRadius: 7,
+                                                                offset: const Offset(
+                                                                    0,
+                                                                    3), // changes position of shadow
+                                                              ),
+                                                            ]
+                                                          : null,
+                                                    ),
+                                                    duration: const Duration(
+                                                        milliseconds: 150),
                                                     child: Image.asset(
                                                       widget.project.asset,
                                                       fit: BoxFit.fitWidth,
-                                                      filterQuality:
-                                                          FilterQuality.none,
                                                     ),
                                                   ),
                                                 ),
@@ -509,7 +508,7 @@ class _PortfolioBlockState extends State<PortfolioBlock> {
                                                       3), // changes position of shadow
                                                 ),
                                               ]
-                                            : [],
+                                            : null,
                                       ),
                                       child: Image.asset(
                                         widget.project.asset,

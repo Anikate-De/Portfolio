@@ -12,7 +12,7 @@ class MoreSection extends StatelessWidget {
       color: Colors.transparent,
       child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: width > 500 ? width / 5.33 : 60, vertical: 120),
+            horizontal: width > 500 ? width / 5.33 : 30, vertical: 120),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

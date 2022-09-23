@@ -41,8 +41,8 @@ class _GetInTouchSectionState extends State<GetInTouchSection> {
       child: Container(
         color: Colors.transparent,
         padding: EdgeInsets.only(
-            left: width > 500 ? width / 5.33 : 80,
-            right: width > 500 ? width / 5.33 : 80,
+            left: width > 500 ? width / 5.33 : 30,
+            right: width > 500 ? width / 5.33 : 30,
             top: width > 500 ? 140 : 110,
             bottom: width > 500 ? 40 : 26),
         child: Column(

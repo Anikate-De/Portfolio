@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/resources/resources.dart';
@@ -44,39 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Center(
-            child: Listener(
-              onPointerSignal: (pointerSignal) {
-                if (pointerSignal is PointerScrollEvent) {
-                  double scroll = pointerSignal.scrollDelta.dy;
-                  log(scroll.toString());
-                  if (pointerSignal.scrollDelta.dy.abs() >= 100) {
-                    if (scroll > 0) {
-                      // Adding the extra offset to over scroll done by user
-                      scroll = (scrollController.offset + scroll + 75);
-                    } else {
-                      scroll = (scrollController.offset + scroll - 75);
-                    }
-                  } else {
-                    scroll += scrollController.offset;
-                  }
-
-                  if (scroll > scrollController.position.maxScrollExtent) {
-                    scroll = scrollController.position.maxScrollExtent;
-                  } else if (scroll < 0) {
-                    scroll = 0;
-                  }
-                  if (pointerSignal.scrollDelta.dy.abs() >= 100) {
-                    scrollController.animateTo(scroll,
-                        duration: const Duration(milliseconds: 150),
-                        curve: Curves.linear);
-                  } else {
-                    scrollController.jumpTo(scroll);
-                  }
-                }
-              },
+            child: ScrollConfiguration(
+              behavior: MyCustomScrollBehavior(),
               child: ListView(
                 controller: scrollController,
-                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   SizedBox(
                       height: height,
@@ -106,4 +75,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
+      };
 }
