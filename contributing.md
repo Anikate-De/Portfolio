@@ -1,6 +1,6 @@
 # Contributing
 
-😍 Thank you for contributing to **`Portfolio`**! 😍
+😍 Thank you for contributing to the Flutter **`Portfolio`**! 😍
 
 ## Philosophy
 
@@ -10,11 +10,11 @@ If you spot anywhere that I could trim some expense and improve performance, or 
 
 ## Linting
 
-Portfolio source files are linted with [lints](https://pub.dev/packages/lints). I recommend you to add this dependency in your pubspec.yaml & use it at all times.
+Portfolio source files are linted with [flutter_lints](https://pub.dev/packages/flutter_lints). I recommend you to add this dependency in your pubspec.yaml & use it at all times.
 
 ```yaml
 dev_dependencies:
-  lints: ^[latest version] # for e.g. ^2.0.0
+  flutter_lints: ^[latest version] # for e.g. ^2.0.0
 ```
 
 ## Formatting
